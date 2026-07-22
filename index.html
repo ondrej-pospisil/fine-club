@@ -132,6 +132,7 @@ a{color:inherit}
 
 .fact .v a{text-decoration:none;border-bottom:1px solid var(--navy-45);padding-bottom:1px}
 .fact .v a:hover{border-color:var(--navy)}
+.fact .addr{font-family:'Jost';font-weight:400;font-size:12px;letter-spacing:.01em;color:var(--muted);margin-top:6px;text-transform:none}
 
 /* ── bento galerie ── */
 .gal-head{text-align:center;margin-bottom:40px}
@@ -226,6 +227,9 @@ footer{border-top:1px solid var(--line);margin-top:96px;padding:44px 0 72px;text
 footer .seal{width:30px;height:30px;margin:0 auto 16px;opacity:.7}
 footer .hosts{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px}
 footer .fine{margin-top:14px;font-family:'Jost';font-weight:500;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+footer .foot-addr{margin-top:10px;font-family:'Jost';font-size:13px;color:var(--muted)}
+footer .foot-addr a{text-decoration:none;border-bottom:1px solid var(--navy-45)}
+footer .foot-addr a:hover{border-color:var(--navy)}
 
 :focus-visible{outline:2px solid var(--navy);outline-offset:3px}
 
@@ -299,7 +303,7 @@ footer .fine{margin-top:14px;font-family:'Jost';font-weight:500;font-size:10.5px
     <div class="datechip">
       <span><b>25. 8. 2026</b></span><span class="dot"></span>
       <span>18:00–22:00</span><span class="dot"></span>
-      <span><a href="https://www.meatbeer.cz/" target="_blank" rel="noopener">Meat Beer, Praha</a></span>
+      <span><a href="https://www.meatbeer.cz/" target="_blank" rel="noopener">Meat Beer · Washingtonova 23</a></span>
     </div>
 
     <div class="countdown" id="countdown" aria-label="Odpočet do začátku akce">
@@ -326,8 +330,7 @@ footer .fine{margin-top:14px;font-family:'Jost';font-weight:500;font-size:10.5px
         <li>podnikáte nebo to plánujete a chcete poznat nové lidi,</li>
         <li>hledáte kontakty, spolupracovníky nebo inspiraci,</li>
         <li>máte konkrétní výzvu a chcete ji probrat s někým, kdo si tím prošel,</li>
-        <li>baví vás sdílet zkušenosti rovnou s druhými, ne přednášet,</li>
-        <li>máte rádi klidnější lokaci mimo centrum.</li>
+        <li>baví vás sdílet zkušenosti rovnou s druhými,</li>
       </ul>
     </div>
     <div class="col no">
@@ -336,7 +339,7 @@ footer .fine{margin-top:14px;font-family:'Jost';font-weight:500;font-size:10.5px
       <ul class="list">
         <li>čekáte přednáškový program nebo prezentace produktů,</li>
         <li>chcete přijít a jen pasivně poslouchat – tady se mluví,</li>
-        <li>hlavní cíl je prodat na místě svůj produkt přítomným,</li>
+        <li>chcete prodat na místě svůj produkt,</li>
         <li>preferujete velké akce a anonymitu davu.</li>
       </ul>
     </div>
@@ -393,7 +396,7 @@ footer .fine{margin-top:14px;font-family:'Jost';font-weight:500;font-size:10.5px
   <section class="facts">
     <div class="fact"><div class="k">Termín</div><div class="v">25. 8. 2026</div></div>
     <div class="fact"><div class="k">Čas</div><div class="v">18:00–22:00</div></div>
-    <div class="fact"><div class="k">Místo</div><div class="v"><a href="https://www.meatbeer.cz/" target="_blank" rel="noopener">Meat Beer</a></div></div>
+    <div class="fact"><div class="k">Místo</div><div class="v"><a href="https://www.meatbeer.cz/" target="_blank" rel="noopener">Meat Beer</a></div><div class="addr">Washingtonova 23, Praha 1</div></div>
     <div class="fact"><div class="k">Kapacita</div><div class="v">35 osob</div></div>
   </section>
 
@@ -427,6 +430,8 @@ footer .fine{margin-top:14px;font-family:'Jost';font-weight:500;font-size:10.5px
           <p>Vstupné neplatíte. Po zaplacení 500 Kč předem dostanete na místě kartu s předplaceným kreditem 500 Kč, který můžete projíst a propít. Nevyčerpaný kredit propadá. Když útrata přesáhne 500 Kč, rozdíl si při odchodu doplatíte sami – kartou nebo hotově.</p>
           <div class="crule"></div>
           <div class="meta">
+            <div><span>Místo</span><strong>Meat Beer</strong></div>
+            <div><span>Adresa</span><strong>Washingtonova 23, Praha 1</strong></div>
             <div><span>Podmínka</span><strong>Jeden host</strong></div>
             <div><span>Kredit</span><strong>500 Kč / osoba</strong></div>
             <div><span>Doplatek</span><strong>Kartou i hotově</strong></div>
@@ -475,6 +480,7 @@ footer .fine{margin-top:14px;font-family:'Jost';font-weight:500;font-size:10.5px
   <footer>
     <svg class="logo logo-foot" viewBox="0 0 197 78" color="#18364C" role="img" aria-label="FINE Club"><use href="#finelogo"/></svg>
     <div class="hosts">Martina Kačerová &amp; Ondra Pospíšil</div>
+    <div class="foot-addr"><a href="https://www.meatbeer.cz/" target="_blank" rel="noopener">Meat Beer · Washingtonova 23, Praha 1</a></div>
     <div class="fine">FINE Club · Nečekejte na změnu, buďte její součástí</div>
   </footer>
 
