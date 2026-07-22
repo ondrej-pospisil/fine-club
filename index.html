@@ -3,33 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FINE Club — Networking pro podnikatele</title>
+<title>FINE Club – Networking pro podnikatele</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --navy:#18364C;
-  --navy-70:rgba(24,54,76,.68);
+  --text:#213A4D;
+  --muted:#4C5F6E;
+  --faint:rgba(24,54,76,.5);
   --navy-45:rgba(24,54,76,.45);
   --cream:#EDE4D9;
   --cream-deep:#E1D4C4;
-  --line:rgba(24,54,76,.22);
+  --line:rgba(24,54,76,.24);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;background:var(--cream);color:var(--navy);
-  font-family:'Jost',system-ui,sans-serif;font-weight:300;
-  line-height:1.7;-webkit-font-smoothing:antialiased;
+  margin:0;background:var(--cream);color:var(--text);
+  font-family:'Jost',system-ui,sans-serif;font-weight:400;
+  font-size:16.5px;line-height:1.72;-webkit-font-smoothing:antialiased;
 }
 .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
 .eyebrow{
-  font-family:'Jost',sans-serif;font-weight:400;font-size:11px;
-  letter-spacing:.4em;text-transform:uppercase;color:var(--navy-70);
+  font-family:'Jost',sans-serif;font-weight:500;font-size:11.5px;
+  letter-spacing:.34em;text-transform:uppercase;color:var(--muted);
 }
-h2{font-family:'Instrument Serif',serif;font-weight:500;font-size:clamp(30px,4.4vw,52px);line-height:1.02;margin:0}
-h3{font-family:'Instrument Serif',serif;font-weight:600;font-size:24px;margin:0 0 6px}
+h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(32px,4.6vw,54px);line-height:1.04;letter-spacing:.005em;margin:0;color:var(--navy)}
+h3{font-family:'Jost',sans-serif;font-weight:500;font-size:18px;letter-spacing:.01em;margin:0 0 8px;color:var(--navy)}
 .serif-it{font-style:italic}
 a{color:inherit}
 
@@ -46,8 +48,21 @@ a{color:inherit}
 .logo-card{height:34px;margin-bottom:22px}
 .logo-foot{height:28px;margin:0 auto 16px;opacity:.85}
 .brand .name{font-family:'Instrument Serif',serif;font-weight:600;font-size:24px;letter-spacing:.06em;line-height:1}
-.brand .name small{display:block;font-family:'Jost';font-weight:400;font-size:8.5px;letter-spacing:.44em;text-transform:uppercase;color:var(--navy-70);margin-top:3px}
-.top .est{font-family:'Jost';font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--navy-70)}
+.brand .name small{display:block;font-family:'Jost';font-weight:400;font-size:8.5px;letter-spacing:.44em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.top .est{font-family:'Jost';font-weight:500;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.top-right{display:flex;align-items:center;gap:20px}
+
+/* ── tlačítko ── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:'Jost';font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;border:1px solid var(--navy);
+  background:var(--navy);color:var(--cream);
+  transition:background .2s ease,color .2s ease;white-space:nowrap;
+}
+.btn:hover{background:transparent;color:var(--navy)}
+.btn-nav{font-size:10.5px;padding:10px 18px}
+.btn-hero{font-size:12px;letter-spacing:.2em;padding:16px 34px;margin-top:44px}
 
 /* ── hero ── */
 .hero{padding:96px 0 40px;text-align:center;position:relative}
@@ -57,14 +72,40 @@ a{color:inherit}
   font-size:clamp(52px,10vw,124px);line-height:.94;letter-spacing:.01em;margin:18px 0 0;
 }
 .hero h1 em{font-style:italic;font-weight:500}
-.hero .lede{max-width:60ch;margin:26px auto 0;color:var(--navy-70);font-size:18px}
+.hero .lede{max-width:58ch;margin:24px auto 0;color:var(--text);font-size:18.5px;line-height:1.7}
 .datechip{
   display:inline-flex;align-items:center;gap:14px;margin-top:38px;
-  border:1px solid var(--line);padding:12px 22px;
-  font-family:'Jost';font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  border:1px solid var(--line);padding:13px 24px;color:var(--navy);
+  font-family:'Jost';font-weight:500;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
 }
-.datechip b{font-weight:500}
+.datechip b{font-weight:600}
+.datechip a{text-decoration:none;border-bottom:1px solid var(--navy-45)}
+.datechip a:hover{border-color:var(--navy)}
 .dot{width:5px;height:5px;border-radius:50%;background:var(--navy);opacity:.5}
+
+/* ── odpočet ── */
+.countdown{
+  display:flex;justify-content:center;align-items:flex-start;
+  gap:clamp(18px,4vw,44px);margin-top:44px;
+}
+.cd-unit{display:flex;flex-direction:column;align-items:center;min-width:58px}
+.cd-num{
+  font-family:'Instrument Serif',serif;font-weight:400;
+  font-size:clamp(42px,7vw,72px);line-height:1;color:var(--navy);
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum";
+}
+.cd-label{
+  margin-top:10px;font-family:'Jost';font-weight:500;font-size:10px;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+}
+.cd-sep{
+  font-family:'Instrument Serif',serif;font-size:clamp(30px,5vw,52px);
+  line-height:1;color:var(--navy-45);align-self:center;margin-top:-6px;
+}
+.cd-live{
+  margin-top:44px;font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:clamp(28px,5vw,44px);color:var(--navy);
+}
 
 .hr{height:1px;background:var(--line);margin:80px 0}
 .hr-sm{height:1px;background:var(--line);margin:0}
@@ -76,7 +117,7 @@ a{color:inherit}
 .col .eyebrow{display:block;margin-bottom:18px}
 .col h2{margin-bottom:24px;font-size:clamp(26px,3.4vw,38px)}
 .list{list-style:none;margin:0;padding:0}
-.list li{position:relative;padding:11px 0 11px 28px;border-top:1px solid var(--line);font-size:15.5px;color:var(--navy-70)}
+.list li{position:relative;padding:12px 0 12px 28px;border-top:1px solid var(--line);font-size:16px;color:var(--text)}
 .list li:first-child{border-top:none}
 .list li::before{content:"";position:absolute;left:0;top:19px;width:12px;height:1px;background:var(--navy);opacity:.6}
 .col.no .list li::before{width:9px;height:9px;top:15px;background:none;border:1px solid var(--navy-45);border-radius:0;transform:rotate(45deg)}
@@ -86,8 +127,8 @@ a{color:inherit}
 .flow-head .eyebrow{display:block;margin-bottom:14px}
 .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .step{background:var(--cream);padding:34px 30px}
-.step .num{font-family:'Instrument Serif',serif;font-style:italic;font-size:34px;color:var(--navy-45);line-height:1;margin-bottom:16px}
-.step p{margin:0;font-size:14.5px;color:var(--navy-70)}
+.step .num{font-family:'Instrument Serif',serif;font-style:italic;font-size:36px;color:var(--navy);opacity:.55;line-height:1;margin-bottom:14px}
+.step p{margin:0;font-size:15.5px;color:var(--muted);line-height:1.66}
 
 .fact .v a{text-decoration:none;border-bottom:1px solid var(--navy-45);padding-bottom:1px}
 .fact .v a:hover{border-color:var(--navy)}
@@ -99,6 +140,8 @@ a{color:inherit}
   display:grid;grid-template-columns:repeat(4,1fr);
   grid-auto-rows:150px;gap:12px;grid-auto-flow:dense;
 }
+.bento-2{grid-template-columns:1fr 1fr;grid-auto-rows:auto;gap:16px}
+.bento-2 .tile{aspect-ratio:4/3;height:auto}
 .tile{
   position:relative;overflow:hidden;border:1px solid var(--line);
   background:var(--cream-deep) center/cover no-repeat;
@@ -119,7 +162,7 @@ a{color:inherit}
 .tile .cap{
   position:relative;z-index:1;width:100%;
   padding:10px 14px;font-family:'Jost';font-size:9.5px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--navy-70);
+  text-transform:uppercase;color:var(--muted);
   background:linear-gradient(0deg,rgba(237,228,217,.9),transparent);
 }
 .tile[style*="background-image"] .cap{color:var(--cream);background:linear-gradient(0deg,rgba(24,54,76,.75),transparent)}
@@ -127,8 +170,15 @@ a{color:inherit}
 /* ── facts ── */
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .fact{background:var(--cream);padding:26px 24px}
-.fact .k{font-family:'Jost';font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--navy-70);margin-bottom:8px}
-.fact .v{font-family:'Instrument Serif',serif;font-size:22px;font-weight:500}
+.fact .k{font-family:'Jost';font-weight:500;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.fact .v{font-family:'Instrument Serif',serif;font-size:24px;font-weight:400;color:var(--navy);line-height:1.1}
+
+/* ── host ── */
+.guest{text-align:center;max-width:760px;margin:0 auto}
+.guest .eyebrow{display:block;margin-bottom:14px}
+.guest h2{margin-bottom:22px}
+.guest p{color:var(--muted);font-size:17px;line-height:1.72;margin:0}
+.guest .em{color:var(--navy);font-weight:500}
 
 /* ── membership card ── */
 .card-head{text-align:center;margin-bottom:40px}
@@ -145,26 +195,26 @@ a{color:inherit}
 .stub::after{bottom:-11px}
 .side{padding:46px 42px;text-align:center}
 .card .seal-lg{width:44px;height:44px;margin-bottom:22px}
-.card h3{color:var(--cream);font-family:'Instrument Serif',serif;font-weight:500;font-size:30px;margin:0 0 4px}
-.card .tag{font-family:'Jost';font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(237,228,217,.66);margin-bottom:24px}
-.card p{color:rgba(237,228,217,.82);font-size:14.5px;margin:0}
+.card h3{color:var(--cream);font-family:'Instrument Serif',serif;font-weight:400;font-size:32px;line-height:1.05;margin:0 0 6px}
+.card .tag{font-family:'Jost';font-weight:500;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:rgba(237,228,217,.75);margin-bottom:24px}
+.card p{color:rgba(237,228,217,.9);font-size:15px;line-height:1.66;margin:0}
 .crule{height:1px;background:linear-gradient(90deg,rgba(237,228,217,.6),transparent);margin:24px 0}
 .card .meta{display:grid;grid-template-columns:1fr 1fr;gap:16px 22px;margin-top:8px;text-align:left}
-.card .meta span{display:block;font-family:'Jost';font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(237,228,217,.6);margin-bottom:3px}
-.card .meta strong{font-family:'Instrument Serif',serif;font-weight:500;font-size:18px}
+.card .meta span{display:block;font-family:'Jost';font-weight:500;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(237,228,217,.68);margin-bottom:4px}
+.card .meta strong{font-family:'Jost',sans-serif;font-weight:600;font-size:15.5px;color:var(--cream)}
 
 .price{font-family:'Instrument Serif',serif;font-size:52px;line-height:1;margin:0}
-.price small{display:block;font-family:'Jost';font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(237,228,217,.6);margin-top:8px}
+.price small{display:block;font-family:'Jost';font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(237,228,217,.72);margin-top:10px}
 .qr-slot{width:184px;height:184px;margin:26px auto 0;background:var(--cream);padding:12px}
 .qr-slot img{width:100%;height:100%;object-fit:contain;display:block}
-.qr-note{font-family:'Jost';font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(237,228,217,.7);margin-top:14px}
-.serial{display:flex;justify-content:space-between;margin-top:30px;font-family:'Jost';font-size:10px;letter-spacing:.16em;color:rgba(237,228,217,.55)}
-.note{max-width:70ch;margin:22px auto 0;text-align:center;font-size:13.5px;color:var(--navy-70)}
+.qr-note{font-family:'Jost';font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(237,228,217,.8);margin-top:14px}
+.serial{display:flex;justify-content:space-between;margin-top:30px;font-family:'Jost';font-size:10.5px;letter-spacing:.14em;color:rgba(237,228,217,.62)}
+.note{max-width:66ch;margin:22px auto 0;text-align:center;font-size:14.5px;color:var(--muted);line-height:1.7}
 
 /* ── form embed ── */
 .form-head{text-align:center;margin-bottom:34px}
 .form-head .eyebrow{display:block;margin-bottom:14px}
-.form-head p{margin:12px 0 0;color:var(--navy-70)}
+.form-head p{margin:12px 0 0;color:var(--muted)}
 .embed{
   border:1px solid var(--line);background:rgba(255,255,255,.35);
   padding:20px;max-width:760px;margin:0 auto;
@@ -175,17 +225,19 @@ a{color:inherit}
 footer{border-top:1px solid var(--line);margin-top:96px;padding:44px 0 72px;text-align:center}
 footer .seal{width:30px;height:30px;margin:0 auto 16px;opacity:.7}
 footer .hosts{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px}
-footer .fine{margin-top:14px;font-family:'Jost';font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--navy-70)}
+footer .fine{margin-top:14px;font-family:'Jost';font-weight:500;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
 
 :focus-visible{outline:2px solid var(--navy);outline-offset:3px}
 
 @media (max-width:860px){
   .wrap{padding:0 22px}
+  .top .est{display:none}
   .split{grid-template-columns:1fr}
   .col:first-child{border-right:none;border-bottom:1px solid var(--line)}
   .flow{grid-template-columns:1fr}
   .facts{grid-template-columns:1fr 1fr}
   .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}
+  .bento-2{grid-template-columns:1fr}
   .tile.big{grid-column:span 2;grid-row:span 2}
   .tile.wide{grid-column:span 2}
   .tile.tall{grid-row:span 2}
@@ -233,20 +285,34 @@ footer .fine{margin-top:14px;font-family:'Jost';font-size:10px;letter-spacing:.2
     <div class="brand">
       <svg class="logo logo-sm" viewBox="0 0 197 78" color="#18364C" role="img" aria-label="FINE Club"><use href="#finelogo"/></svg>
     </div>
-    <div class="est">Est. 2026 · Praha</div>
+    <div class="top-right">
+      <div class="est">Est. 2026 · Praha</div>
+      <a href="#prihlaska" class="btn btn-nav">Přihlásit se</a>
+    </div>
   </div>
 
   <!-- hero -->
   <header class="hero">
-    <svg class="logo logo-hero" viewBox="0 0 197 78" color="#18364C" role="img" aria-label="FINE Club"><use href="#finelogo"/></svg>
     <p class="eyebrow">Networking pro podnikatele</p>
     <h1>Večer, kde se<br><em>dějí věci</em></h1>
-    <p class="lede">Není to konference ani kurz. Je to setkání podnikatelů, kde nové kontakty i nápady vznikají přirozeně — v rozhovoru, ne v prezentaci.</p>
+    <p class="lede">Není to konference ani kurz. Je to setkání podnikatelů, kde nové kontakty i nápady vznikají přirozeně – v rozhovoru, ne v prezentaci.</p>
     <div class="datechip">
       <span><b>25. 8. 2026</b></span><span class="dot"></span>
-      <span>18:00–20:30</span><span class="dot"></span>
-      <span>Meat Beer, Praha</span>
+      <span>18:00–22:00</span><span class="dot"></span>
+      <span><a href="https://www.meatbeer.cz/" target="_blank" rel="noopener">Meat Beer, Praha</a></span>
     </div>
+
+    <div class="countdown" id="countdown" aria-label="Odpočet do začátku akce">
+      <div class="cd-unit"><span class="cd-num" id="cd-d">00</span><span class="cd-label">dní</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-h">00</span><span class="cd-label">hodin</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-m">00</span><span class="cd-label">minut</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-s">00</span><span class="cd-label">sekund</span></div>
+    </div>
+
+    <a href="#prihlaska" class="btn btn-hero">Chci se přihlásit</a>
   </header>
 
   <div class="hr"></div>
@@ -269,7 +335,7 @@ footer .fine{margin-top:14px;font-family:'Jost';font-size:10px;letter-spacing:.2
       <h2>Tohle není pro vás</h2>
       <ul class="list">
         <li>čekáte přednáškový program nebo prezentace produktů,</li>
-        <li>chcete přijít a jen pasivně poslouchat — tady se mluví,</li>
+        <li>chcete přijít a jen pasivně poslouchat – tady se mluví,</li>
         <li>hlavní cíl je prodat na místě svůj produkt přítomným,</li>
         <li>preferujete velké akce a anonymitu davu.</li>
       </ul>
@@ -288,7 +354,7 @@ footer .fine{margin-top:14px;font-family:'Jost';font-size:10px;letter-spacing:.2
       <div class="step">
         <div class="num">I</div>
         <h3>Představení</h3>
-        <p>Každý řekne pár vět o sobě a svém byznysu. Žádné monology — jen tolik, aby ostatní věděli, s kým sedí u stolu.</p>
+        <p>Každý řekne pár vět o sobě a svém byznysu. Žádné monology – jen tolik, aby ostatní věděli, s kým sedí u stolu.</p>
       </div>
       <div class="step">
         <div class="num">II</div>
@@ -298,7 +364,7 @@ footer .fine{margin-top:14px;font-family:'Jost';font-size:10px;letter-spacing:.2
       <div class="step">
         <div class="num">III</div>
         <h3>Téma z osudí</h3>
-        <p>Když diskuze utichne, vytáhnete téma z osudí — otázku nebo dilema, které podnikatele potkává. Rozproudí večer dál.</p>
+        <p>Když diskuze utichne, vytáhnete téma z osudí – otázku nebo dilema, které podnikatele potkává. Rozproudí večer dál.</p>
       </div>
     </div>
   </section>
@@ -312,18 +378,12 @@ footer .fine{margin-top:14px;font-family:'Jost';font-size:10px;letter-spacing:.2
       <h2>Galerie</h2>
     </div>
     <!--
-      Fotky vložíš takto: k dané dlaždici doplň  style="background-image:url('fotka.jpg')"
-      (např. <div class="tile big" style="background-image:url('sal.jpg')">).
-      Dokud fotku nevložíš, ukazuje se decentní placeholder.
+      Fotky: vlož soubory networking-cerven-1.jpg a networking-cerven-2.jpg vedle tohoto HTML.
+      (Pokud mají jinou příponu než .jpg, uprav ji v url(...) níže.)
     -->
-    <div class="bento">
-      <div class="tile big"><span class="cap">Hlavní sál</span></div>
-      <div class="tile wide"><span class="cap">Společný stůl</span></div>
-      <div class="tile"><span class="cap">Detail</span></div>
-      <div class="tile tall"><span class="cap">Bar</span></div>
-      <div class="tile"><span class="cap">Hosté</span></div>
-      <div class="tile wide"><span class="cap">Atmosféra večera</span></div>
-      <div class="tile"><span class="cap">Menu</span></div>
+    <div class="bento bento-2">
+      <div class="tile" style="background-image:url('networking-cerven-1.jpg')"><span class="cap">Červen 2026</span></div>
+      <div class="tile" style="background-image:url('networking-cerven-2.jpg')"><span class="cap">Červen 2026</span></div>
     </div>
   </section>
 
@@ -332,9 +392,20 @@ footer .fine{margin-top:14px;font-family:'Jost';font-size:10px;letter-spacing:.2
   <!-- detaily -->
   <section class="facts">
     <div class="fact"><div class="k">Termín</div><div class="v">25. 8. 2026</div></div>
-    <div class="fact"><div class="k">Čas</div><div class="v">18:00–20:30</div></div>
+    <div class="fact"><div class="k">Čas</div><div class="v">18:00–22:00</div></div>
     <div class="fact"><div class="k">Místo</div><div class="v"><a href="https://www.meatbeer.cz/" target="_blank" rel="noopener">Meat Beer</a></div></div>
     <div class="fact"><div class="k">Kapacita</div><div class="v">35 osob</div></div>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- host -->
+  <section>
+    <div class="guest">
+      <span class="eyebrow">Jediná podmínka</span>
+      <h2>Jeden host s sebou</h2>
+      <p>Každý účastník přivede na večer <span class="em">jednoho hosta</span> – kamaráda, kolegu, člena rodiny, klienta, spoluzakladatele nebo kohokoli, o kom si myslíte, že by se hodil do party. Díky tomu se okruh lidí každým večerem rozšiřuje a vždy tu potkáte tváře, které jste ještě neznali. Kdo přichází jako host, zvát nikoho nemusí – ale může, a je to velmi vítané. Cílem je seznámit se s co nejvíce podnikateli a budovat pracovní i obchodní vztahy s relevantními lidmi.</p>
+    </div>
   </section>
 
   <div class="hr"></div>
@@ -353,19 +424,19 @@ footer .fine{margin-top:14px;font-family:'Jost';font-size:10px;letter-spacing:.2
           <svg class="logo logo-card" viewBox="0 0 197 78" color="#EDE4D9" role="img" aria-label="FINE Club"><use href="#finelogo"/></svg>
           <h3>Networkingový večer</h3>
           <p class="tag">Na jméno · vstup s vlastním hostem</p>
-          <p>Setkání je zdarma — nepotřebujeme na vás vydělávat. Restaurace si ale přeje zálohu 500 Kč na osobu, kterou hradíme předem jako rezervaci místa pro celou skupinu. Vše, co utratíte nad 500 Kč, doplatíte v hotovosti na místě.</p>
+          <p>Vstupné neplatíte. Po zaplacení 500 Kč předem dostanete na místě kartu s předplaceným kreditem 500 Kč, který můžete projíst a propít. Nevyčerpaný kredit propadá. Když útrata přesáhne 500 Kč, rozdíl si při odchodu doplatíte sami – kartou nebo hotově.</p>
           <div class="crule"></div>
           <div class="meta">
             <div><span>Podmínka</span><strong>Jeden host</strong></div>
-            <div><span>Doplatek</span><strong>Hotově na místě</strong></div>
-            <div><span>Rezervace</span><strong>Až po platbě</strong></div>
-            <div><span>Záloha</span><strong>Nevratná</strong></div>
+            <div><span>Kredit</span><strong>500 Kč / osoba</strong></div>
+            <div><span>Doplatek</span><strong>Kartou i hotově</strong></div>
+            <div><span>Nevyčerpáno</span><strong>Propadá</strong></div>
           </div>
           <div class="serial"><span>č. 00 / 35</span><span>FC–2026–08</span></div>
         </div>
 
         <div class="side">
-          <p class="price">500 Kč<small>záloha na útratu</small></p>
+          <p class="price">500 Kč<small>předplacený kredit</small></p>
           <div class="crule"></div>
 
           <!-- ZDE VLOŽ SVŮJ QR KÓD (nahraď src) -->
@@ -384,13 +455,13 @@ footer .fine{margin-top:14px;font-family:'Jost';font-size:10px;letter-spacing:.2
       </div>
     </div>
 
-    <p class="note">Místo se vám rezervuje až po uhrazení zálohy — totéž platí pro vašeho hosta. Záloha je nevratná, restauraci ji platíme dopředu za celou skupinu.</p>
+    <p class="note">Místo se rezervuje až po zaplacení – totéž platí pro vašeho hosta. Kredit je předplacený a jeho nevyčerpaná část propadá.</p>
   </section>
 
   <div class="hr"></div>
 
   <!-- přihláška (embed placeholder) -->
-  <section>
+  <section id="prihlaska">
     <div class="form-head">
       <span class="eyebrow">Kapacita je omezená</span>
       <h2>Přihláška</h2>
@@ -410,5 +481,31 @@ footer .fine{margin-top:14px;font-family:'Jost';font-size:10px;letter-spacing:.2
 
 </div>
 <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+<script>
+(function(){
+  var target = new Date('2026-08-25T18:00:00+02:00').getTime();
+  var box = document.getElementById('countdown');
+  var d = document.getElementById('cd-d'),
+      h = document.getElementById('cd-h'),
+      m = document.getElementById('cd-m'),
+      s = document.getElementById('cd-s');
+  function pad(n){ return (n<10?'0':'') + n; }
+  function tick(){
+    var diff = target - Date.now();
+    if(diff <= 0){
+      if(box){ box.outerHTML = '<div class="cd-live">Právě probíhá</div>'; }
+      clearInterval(timer);
+      return;
+    }
+    var t = Math.floor(diff/1000);
+    d.textContent = Math.floor(t/86400);
+    h.textContent = pad(Math.floor(t%86400/3600));
+    m.textContent = pad(Math.floor(t%3600/60));
+    s.textContent = pad(t%60);
+  }
+  tick();
+  var timer = setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>
