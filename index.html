@@ -120,8 +120,29 @@ a{color:inherit}
 .list li{position:relative;padding:12px 0 12px 28px;border-top:1px solid var(--line);font-size:16px;color:var(--text)}
 .list li:first-child{border-top:none}
 .list li::before{content:"";position:absolute;left:0;top:19px;width:12px;height:1px;background:var(--navy);opacity:.6}
-.col.no .list li::before{width:9px;height:9px;top:15px;background:none;border:1px solid var(--navy-45);border-radius:0;transform:rotate(45deg)}
+  
+/* První linka křížku (nahrazuje původní kosočtverec) */
+.col.no .list li::before {
+  width: 12px;
+  height: 1px;
+  top: 19px;
+  background: var(--navy-45);
+  border: none;
+  border-radius: 0;
+  transform: rotate(45deg);
+}
 
+/* Druhá linka křížku do tvaru X */
+.col.no .list li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 19px;
+  width: 12px;
+  height: 1px;
+  background: var(--navy-45);
+  transform: rotate(-45deg);
+}
 /* ── flow ── */
 .flow-head{text-align:center;margin-bottom:52px}
 .flow-head .eyebrow{display:block;margin-bottom:14px}
