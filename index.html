@@ -120,7 +120,7 @@ a{color:inherit}
 .list li{position:relative;padding:12px 0 12px 28px;border-top:1px solid var(--line);font-size:16px;color:var(--text)}
 .list li:first-child{border-top:none}
 .list li::before{content:"";position:absolute;left:0;top:19px;width:12px;height:1px;background:var(--navy);opacity:.6}
-  
+
 /* První linka křížku (nahrazuje původní kosočtverec) */
 .col.no .list li::before {
   width: 12px;
@@ -143,6 +143,7 @@ a{color:inherit}
   background: var(--navy-45);
   transform: rotate(-45deg);
 }
+
 /* ── flow ── */
 .flow-head{text-align:center;margin-bottom:52px}
 .flow-head .eyebrow{display:block;margin-bottom:14px}
@@ -467,7 +468,7 @@ footer .foot-addr a:hover{border-color:var(--navy)}
 
           <!-- ZDE VLOŽ SVŮJ QR KÓD (nahraď src) -->
           <div class="qr-slot">
-            <img background-image:url('qr-500.jpg')
+            <img src="qr-500.jpg" alt="QR kód pro platbu zálohy">
           </div>
 
           <div class="crule"></div>
