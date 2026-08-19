@@ -63,6 +63,12 @@ a{color:inherit}
 .btn:hover{background:transparent;color:var(--navy)}
 .btn-nav{font-size:10.5px;padding:10px 18px}
 .btn-hero{font-size:12px;letter-spacing:.2em;padding:16px 34px;margin-top:44px}
+.btn-soldout {
+  background: var(--muted);
+  border-color: var(--muted);
+  cursor: not-allowed;
+  pointer-events: none;
+}
 
 /* ── hero ── */
 .hero{padding:96px 0 40px;text-align:center;position:relative}
@@ -209,9 +215,10 @@ a{color:inherit}
 .card{
   position:relative;background:var(--navy);color:var(--cream);
   padding:8px;box-shadow:0 50px 90px -50px rgba(24,54,76,.7);
+  overflow:hidden;
 }
-.card::before{content:"";position:absolute;inset:14px;border:1px solid rgba(237,228,217,.34);pointer-events:none}
-.card-inner{display:grid;grid-template-columns:1.2fr 1fr}
+.card::before{content:"";position:absolute;inset:14px;border:1px solid rgba(237,228,217,.34);pointer-events:none;z-index:2;}
+.card-inner{display:grid;grid-template-columns:1.2fr 1fr;transition:opacity .3s ease, filter .3s ease;}
 .stub{padding:46px 42px;border-right:2px dashed rgba(237,228,217,.4);position:relative}
 .stub::before,.stub::after{content:"";position:absolute;right:-11px;width:20px;height:20px;border-radius:50%;background:var(--cream)}
 .stub::before{top:-11px}
@@ -233,6 +240,41 @@ a{color:inherit}
 .qr-note{font-family:'Jost';font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(237,228,217,.8);margin-top:14px}
 .serial{display:flex;justify-content:space-between;margin-top:30px;font-family:'Jost';font-size:10.5px;letter-spacing:.14em;color:rgba(237,228,217,.62)}
 .note{max-width:66ch;margin:22px auto 0;text-align:center;font-size:14.5px;color:var(--muted);line-height:1.7}
+
+/* ── vyprodáno - efekt utlumení karty ── */
+.card.soldout .card-inner {
+  opacity: 0.15;
+  filter: grayscale(80%) blur(1px);
+  pointer-events: none;
+}
+.soldout-stamp {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+.soldout-stamp span {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(48px, 6vw, 82px);
+  line-height: 1;
+  color: var(--cream);
+  text-shadow: 0 10px 30px rgba(24,54,76,.9);
+}
+.soldout-stamp small {
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: clamp(13px, 2vw, 17px);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-top: 14px;
+}
 
 /* ── form embed ── */
 .form-head{text-align:center;margin-bottom:34px}
@@ -313,7 +355,7 @@ footer .foot-addr a:hover{border-color:var(--navy)}
     </div>
     <div class="top-right">
       <div class="est">Est. 2026 · Praha</div>
-      <a href="#prihlaska" class="btn btn-nav">Přihlásit se</a>
+      <a href="#prihlaska" class="btn btn-nav btn-soldout">Vyprodáno</a>
     </div>
   </div>
 
@@ -338,7 +380,7 @@ footer .foot-addr a:hover{border-color:var(--navy)}
       <div class="cd-unit"><span class="cd-num" id="cd-s">00</span><span class="cd-label">sekund</span></div>
     </div>
 
-    <a href="#prihlaska" class="btn btn-hero">Chci se přihlásit</a>
+    <a href="#prihlaska" class="btn btn-hero btn-soldout">Vyprodáno</a>
   </header>
 
   <div class="hr"></div>
@@ -402,10 +444,6 @@ footer .foot-addr a:hover{border-color:var(--navy)}
       <span class="eyebrow">Místo &amp; atmosféra</span>
       <h2>Galerie</h2>
     </div>
-    <!--
-      Fotky: vlož soubory networking-cerven-1.jpg a networking-cerven-2.jpg vedle tohoto HTML.
-      (Pokud mají jinou příponu než .jpg, uprav ji v url(...) níže.)
-    -->
     <div class="bento bento-2">
       <div class="tile" style="background-image:url('networking-cerven-1.jpg')"><span class="cap">Červen 2026</span></div>
       <div class="tile" style="background-image:url('networking-cerven-2.jpg')"><span class="cap">Červen 2026</span></div>
@@ -419,7 +457,7 @@ footer .foot-addr a:hover{border-color:var(--navy)}
     <div class="fact"><div class="k">Termín</div><div class="v">25. 8. 2026</div></div>
     <div class="fact"><div class="k">Čas</div><div class="v">18:00–22:00</div></div>
     <div class="fact"><div class="k">Místo</div><div class="v"><a href="https://www.meatbeer.cz/" target="_blank" rel="noopener">Meat Beer</a></div><div class="addr">Washingtonova 23, Praha 1</div></div>
-    <div class="fact"><div class="k">Kapacita</div><div class="v">35 osob</div></div>
+    <div class="fact"><div class="k">Kapacita</div><div class="v">Vyprodáno</div></div>
   </section>
 
   <div class="hr"></div>
@@ -442,9 +480,16 @@ footer .foot-addr a:hover{border-color:var(--navy)}
       <h2>Vaše vstupenka</h2>
     </div>
 
-    <div class="card">
-      <div class="card-inner">
+    <!-- TŘÍDA SOLDOUT ZTLUMÍ PŮVODNÍ KARTU -->
+    <div class="card soldout">
 
+      <!-- EFEKTNÍ NÁPIS PŘES KARTU -->
+      <div class="soldout-stamp">
+        <span>Máme vyprodáno!</span>
+        <small>Děkujeme a těšíme se na vás</small>
+      </div>
+
+      <div class="card-inner">
         <div class="stub">
           <svg class="logo logo-card" viewBox="0 0 197 78" color="#EDE4D9" role="img" aria-label="FINE Club"><use href="#finelogo"/></svg>
           <h3>Networkingový večer</h3>
@@ -459,7 +504,7 @@ footer .foot-addr a:hover{border-color:var(--navy)}
             <div><span>Doplatek</span><strong>Kartou i hotově</strong></div>
             <div><span>Nevyčerpáno</span><strong>Propadá</strong></div>
           </div>
-          <div class="serial"><span>č. 00 / 35</span><span>FC–2026–08</span></div>
+          <div class="serial"><span>č. 35 / 35</span><span>FC–2026–08</span></div>
         </div>
 
         <div class="side">
@@ -489,13 +534,17 @@ footer .foot-addr a:hover{border-color:var(--navy)}
   <!-- přihláška (embed placeholder) -->
   <section id="prihlaska">
     <div class="form-head">
-      <span class="eyebrow">Kapacita je omezená</span>
-      <h2>Přihláška</h2>
-      <p>Přihlášení je povinné. Uveďte prosím i to, koho přivedete jako hosta. Váš host už svého hosta brát nemusí.</p>
+      <span class="eyebrow">Kapacita je plná</span>
+      <h2>Vyprodáno</h2>
+      <p>Kapacita tohoto večera je již plně vyčerpána. Těšíme se na vás na dalším setkání.</p>
     </div>
+
+    <!-- Formulář Tally je zakomentovaný z důvodu vyprodání kapacity -->
+    <!--
     <div class="embed">
       <iframe data-tally-src="https://tally.so/embed/J9er24?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="2906" frameborder="0" marginheight="0" marginwidth="0" title="FINE Club – přihláška"></iframe>
     </div>
+    -->
   </section>
 
   <!-- footer -->
@@ -507,7 +556,10 @@ footer .foot-addr a:hover{border-color:var(--navy)}
   </footer>
 
 </div>
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+
+<!-- Tally Embed skript (nyní zakomentovaný) -->
+<!-- <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script> -->
+
 <script>
 (function(){
   var target = new Date('2026-08-25T18:00:00+02:00').getTime();
