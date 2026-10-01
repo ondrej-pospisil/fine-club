@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /_archive/
+Disallow: /_source/
+Disallow: /scripts/
+Disallow: /.cms/
+
+Sitemap: https://fine-club.vercel.app/sitemap.xml

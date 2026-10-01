@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FINE Club – Networking pro podnikatele</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#18364C;
+  --text:#213A4D;
+  --muted:#4C5F6E;
+  --faint:rgba(24,54,76,.5);
+  --navy-45:rgba(24,54,76,.45);
+  --cream:#EDE4D9;
+  --cream-deep:#E1D4C4;
+  --line:rgba(24,54,76,.24);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--cream);color:var(--text);
+  font-family:'Jost',system-ui,sans-serif;font-weight:400;
+  font-size:16.5px;line-height:1.72;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.eyebrow{
+  font-family:'Jost',sans-serif;font-weight:500;font-size:11.5px;
+  letter-spacing:.34em;text-transform:uppercase;color:var(--muted);
+}
+h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(32px,4.6vw,54px);line-height:1.04;letter-spacing:.005em;margin:0;color:var(--navy)}
+h3{font-family:'Jost',sans-serif;font-weight:500;font-size:18px;letter-spacing:.01em;margin:0 0 8px;color:var(--navy)}
+.serif-it{font-style:italic}
+a{color:inherit}
+
+/* ── top bar ── */
+.top{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:26px 0;border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:14px}
+.seal{width:34px;height:34px;flex:none}
+.logo{width:auto;display:block}
+.logo-sm{height:26px}
+.logo-hero{height:58px;margin:0 auto 26px}
+.logo-card{height:34px;margin-bottom:22px}
+.logo-foot{height:28px;margin:0 auto 16px;opacity:.85}
+.brand .name{font-family:'Instrument Serif',serif;font-weight:600;font-size:24px;letter-spacing:.06em;line-height:1}
+.brand .name small{display:block;font-family:'Jost';font-weight:400;font-size:8.5px;letter-spacing:.44em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.top .est{font-family:'Jost';font-weight:500;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.top-right{display:flex;align-items:center;gap:20px}
+
+/* ── tlačítko ── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:'Jost';font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;border:1px solid var(--navy);
+  background:var(--navy);color:var(--cream);
+  transition:background .2s ease,color .2s ease;white-space:nowrap;
+}
+.btn:hover{background:transparent;color:var(--navy)}
+.btn-nav{font-size:10.5px;padding:10px 18px}
+.btn-hero{font-size:12px;letter-spacing:.2em;padding:16px 34px;margin-top:44px}
+
+/* ── hero ── */
+.hero{padding:96px 0 40px;text-align:center;position:relative}
+.hero .mark{width:64px;height:64px;margin:0 auto 30px;opacity:.9}
+.hero h1{
+  font-family:'Instrument Serif',serif;font-weight:400;
+  font-size:clamp(52px,10vw,124px);line-height:.94;letter-spacing:.01em;margin:18px 0 0;
+}
+.hero h1 em{font-style:italic;font-weight:500}
+.hero .lede{max-width:58ch;margin:24px auto 0;color:var(--text);font-size:18.5px;line-height:1.7}
+.datechip{
+  display:inline-flex;align-items:center;gap:14px;margin-top:38px;
+  border:1px solid var(--line);padding:13px 24px;color:var(--navy);
+  font-family:'Jost';font-weight:500;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+}
+.datechip b{font-weight:600}
+.datechip a{text-decoration:none;border-bottom:1px solid var(--navy-45)}
+.datechip a:hover{border-color:var(--navy)}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--navy);opacity:.5}
+
+/* ── odpočet ── */
+.countdown{
+  display:flex;justify-content:center;align-items:flex-start;
+  gap:clamp(18px,4vw,44px);margin-top:44px;
+}
+.cd-unit{display:flex;flex-direction:column;align-items:center;min-width:58px}
+.cd-num{
+  font-family:'Instrument Serif',serif;font-weight:400;
+  font-size:clamp(42px,7vw,72px);line-height:1;color:var(--navy);
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum";
+}
+.cd-label{
+  margin-top:10px;font-family:'Jost';font-weight:500;font-size:10px;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+}
+.cd-sep{
+  font-family:'Instrument Serif',serif;font-size:clamp(30px,5vw,52px);
+  line-height:1;color:var(--navy-45);align-self:center;margin-top:-6px;
+}
+.cd-live{
+  margin-top:44px;font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:clamp(28px,5vw,44px);color:var(--navy);
+}
+
+.hr{height:1px;background:var(--line);margin:80px 0}
+.hr-sm{height:1px;background:var(--line);margin:0}
+
+/* ── fit / not fit ── */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line)}
+.col{padding:44px 40px}
+.col:first-child{border-right:1px solid var(--line)}
+.col .eyebrow{display:block;margin-bottom:18px}
+.col h2{margin-bottom:24px;font-size:clamp(26px,3.4vw,38px)}
+.list{list-style:none;margin:0;padding:0}
+.list li{position:relative;padding:12px 0 12px 28px;border-top:1px solid var(--line);font-size:16px;color:var(--text)}
+.list li:first-child{border-top:none}
+.list li::before{content:"";position:absolute;left:0;top:19px;width:12px;height:1px;background:var(--navy);opacity:.6}
+
+/* První linka křížku (nahrazuje původní kosočtverec) */
+.col.no .list li::before {
+  width: 12px;
+  height: 1px;
+  top: 19px;
+  background: var(--navy-45);
+  border: none;
+  border-radius: 0;
+  transform: rotate(45deg);
+}
+
+/* Druhá linka křížku do tvaru X */
+.col.no .list li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 19px;
+  width: 12px;
+  height: 1px;
+  background: var(--navy-45);
+  transform: rotate(-45deg);
+}
+
+/* ── flow ── */
+.flow-head{text-align:center;margin-bottom:52px}
+.flow-head .eyebrow{display:block;margin-bottom:14px}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.step{background:var(--cream);padding:34px 30px}
+.step .num{font-family:'Instrument Serif',serif;font-style:italic;font-size:36px;color:var(--navy);opacity:.55;line-height:1;margin-bottom:14px}
+.step p{margin:0;font-size:15.5px;color:var(--muted);line-height:1.66}
+
+.fact .v a{text-decoration:none;border-bottom:1px solid var(--navy-45);padding-bottom:1px}
+.fact .v a:hover{border-color:var(--navy)}
+.fact .addr{font-family:'Jost';font-weight:400;font-size:12px;letter-spacing:.01em;color:var(--muted);margin-top:6px;text-transform:none}
+
+/* ── bento galerie ── */
+.gal-head{text-align:center;margin-bottom:40px}
+.gal-head .eyebrow{display:block;margin-bottom:14px}
+.bento{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:150px;gap:12px;grid-auto-flow:dense;
+}
+.bento-2{grid-template-columns:1fr 1fr;grid-auto-rows:auto;gap:16px}
+.bento-2 .tile{aspect-ratio:4/3;height:auto}
+.tile{
+  position:relative;overflow:hidden;border:1px solid var(--line);
+  background:var(--cream-deep) center/cover no-repeat;
+  display:flex;align-items:flex-end;
+}
+.tile.wide{grid-column:span 2}
+.tile.tall{grid-row:span 2}
+.tile.big{grid-column:span 2;grid-row:span 2}
+/* placeholder vzhled dokud nevložíš fotku */
+.tile::before{
+  content:"";position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(45deg,transparent 0 18px,rgba(24,54,76,.05) 18px 19px),
+    linear-gradient(160deg,var(--cream-deep),#D8C9B6);
+  z-index:0;
+}
+.tile[style*="background-image"]::before{display:none}
+.tile .cap{
+  position:relative;z-index:1;width:100%;
+  padding:10px 14px;font-family:'Jost';font-size:9.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);
+  background:linear-gradient(0deg,rgba(237,228,217,.9),transparent);
+}
+.tile[style*="background-image"] .cap{color:var(--cream);background:linear-gradient(0deg,rgba(24,54,76,.75),transparent)}
+
+/* ── facts ── */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.fact{background:var(--cream);padding:26px 24px}
+.fact .k{font-family:'Jost';font-weight:500;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.fact .v{font-family:'Instrument Serif',serif;font-size:24px;font-weight:400;color:var(--navy);line-height:1.1}
+
+/* ── host ── */
+.guest{text-align:center;max-width:760px;margin:0 auto}
+.guest .eyebrow{display:block;margin-bottom:14px}
+.guest h2{margin-bottom:22px}
+.guest p{color:var(--muted);font-size:17px;line-height:1.72;margin:0}
+.guest .em{color:var(--navy);font-weight:500}
+
+/* ── membership card ── */
+.card-head{text-align:center;margin-bottom:40px}
+.card-head .eyebrow{display:block;margin-bottom:14px}
+.card{
+  position:relative;background:var(--navy);color:var(--cream);
+  padding:8px;box-shadow:0 50px 90px -50px rgba(24,54,76,.7);
+}
+.card::before{content:"";position:absolute;inset:14px;border:1px solid rgba(237,228,217,.34);pointer-events:none}
+.card-inner{display:grid;grid-template-columns:1.2fr 1fr}
+.stub{padding:46px 42px;border-right:2px dashed rgba(237,228,217,.4);position:relative}
+.stub::before,.stub::after{content:"";position:absolute;right:-11px;width:20px;height:20px;border-radius:50%;background:var(--cream)}
+.stub::before{top:-11px}
+.stub::after{bottom:-11px}
+.side{padding:46px 42px;text-align:center}
+.card .seal-lg{width:44px;height:44px;margin-bottom:22px}
+.card h3{color:var(--cream);font-family:'Instrument Serif',serif;font-weight:400;font-size:32px;line-height:1.05;margin:0 0 6px}
+.card .tag{font-family:'Jost';font-weight:500;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:rgba(237,228,217,.75);margin-bottom:24px}
+.card p{color:rgba(237,228,217,.9);font-size:15px;line-height:1.66;margin:0}
+.crule{height:1px;background:linear-gradient(90deg,rgba(237,228,217,.6),transparent);margin:24px 0}
+.card .meta{display:grid;grid-template-columns:1fr 1fr;gap:16px 22px;margin-top:8px;text-align:left}
+.card .meta span{display:block;font-family:'Jost';font-weight:500;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(237,228,217,.68);margin-bottom:4px}
+.card .meta strong{font-family:'Jost',sans-serif;font-weight:600;font-size:15.5px;color:var(--cream)}
+
+.price{font-family:'Instrument Serif',serif;font-size:52px;line-height:1;margin:0}
+.price small{display:block;font-family:'Jost';font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(237,228,217,.72);margin-top:10px}
+.qr-slot{width:184px;height:184px;margin:26px auto 0;background:var(--cream);padding:12px}
+.qr-slot img{width:100%;height:100%;object-fit:contain;display:block}
+.qr-note{font-family:'Jost';font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(237,228,217,.8);margin-top:14px}
+.serial{display:flex;justify-content:space-between;margin-top:30px;font-family:'Jost';font-size:10.5px;letter-spacing:.14em;color:rgba(237,228,217,.62)}
+.note{max-width:66ch;margin:22px auto 0;text-align:center;font-size:14.5px;color:var(--muted);line-height:1.7}
+
+/* ── form embed ── */
+.form-head{text-align:center;margin-bottom:34px}
+.form-head .eyebrow{display:block;margin-bottom:14px}
+.form-head p{margin:12px 0 0;color:var(--muted)}
+.embed{
+  border:1px solid var(--line);background:rgba(255,255,255,.35);
+  padding:20px;max-width:760px;margin:0 auto;
+}
+.embed iframe{display:block;width:100%;border:0}
+
+/* ── footer ── */
+footer{border-top:1px solid var(--line);margin-top:96px;padding:44px 0 72px;text-align:center}
+footer .seal{width:30px;height:30px;margin:0 auto 16px;opacity:.7}
+footer .hosts{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px}
+footer .fine{margin-top:14px;font-family:'Jost';font-weight:500;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+footer .foot-addr{margin-top:10px;font-family:'Jost';font-size:13px;color:var(--muted)}
+footer .foot-addr a{text-decoration:none;border-bottom:1px solid var(--navy-45)}
+footer .foot-addr a:hover{border-color:var(--navy)}
+
+:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+
+@media (max-width:860px){
+  .wrap{padding:0 22px}
+  .top .est{display:none}
+  .split{grid-template-columns:1fr}
+  .col:first-child{border-right:none;border-bottom:1px solid var(--line)}
+  .flow{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr 1fr}
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}
+  .bento-2{grid-template-columns:1fr;grid-auto-rows:auto}
+  .tile.big{grid-column:span 2;grid-row:span 2}
+  .tile.wide{grid-column:span 2}
+  .tile.tall{grid-row:span 2}
+  .card-inner{grid-template-columns:1fr}
+  .stub{border-right:none;border-bottom:2px dashed rgba(237,228,217,.4)}
+  .stub::before{top:auto;bottom:-11px;left:-11px;right:auto}
+  .stub::after{right:-11px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .card{transition:transform .5s ease}
+  .card:hover{transform:translateY(-4px)}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- kompasový znak, sdílený -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="compass">
+        <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width=".7"/>
+        <path d="M50 8 L57 50 L50 44 L43 50 Z" fill="currentColor"/>
+        <path d="M50 92 L43 50 L50 56 L57 50 Z" fill="currentColor" opacity=".55"/>
+        <path d="M8 50 L50 43 L44 50 L50 57 Z" fill="currentColor" opacity=".8"/>
+        <path d="M92 50 L50 57 L56 50 L50 43 Z" fill="currentColor" opacity=".8"/>
+        <circle cx="50" cy="50" r="3" fill="currentColor"/>
+      </g>
+      <g id="finelogo">
+        <path d="M159.33 48V47.808H165.09V0.192001H159.33V0H195.81V13.12H195.65C195.33 10.8373 194.594 8.71467 193.442 6.752C192.311 4.78934 190.807 3.21067 188.93 2.016C187.053 0.800002 184.866 0.192001 182.37 0.192001H175.01V47.808H181.698C184.642 47.808 187.138 47.1893 189.186 45.952C191.234 44.7147 192.845 43.0293 194.018 40.896C195.213 38.7413 195.97 36.3093 196.29 33.6H196.482V48H159.33ZM185.73 31.168C185.41 29.7387 184.813 28.4267 183.938 27.232C183.063 26.0373 182.029 25.0773 180.834 24.352C179.661 23.6267 178.466 23.264 177.25 23.264H172.354V23.072H177.25C178.466 23.072 179.661 22.7413 180.834 22.08C182.029 21.4187 183.063 20.512 183.938 19.36C184.813 18.208 185.41 16.9173 185.73 15.488H185.922V31.168H185.73Z" fill="currentColor"/>
+        <path d="M102.592 0V47.808H110.016V48H96.0325V47.808H102.4V0.192001H96.0325V0H102.592ZM141.856 0V0.192001H135.136V48.64H134.912L102.464 0H114.304L134.944 31.712V0.192001H127.584V0H141.856Z" fill="currentColor"/>
+        <path d="M53.86 48V47.808H60.9V0.192001H53.86V0H78.5V0.192001H70.82V47.808H78.5V48H53.86Z" fill="currentColor"/>
+        <path d="M26.368 32.128C26.048 30.6987 25.4827 29.3867 24.672 28.192C23.8827 26.9973 22.8587 26.0373 21.6 25.312C20.3627 24.5867 18.9227 24.224 17.28 24.224H13.12V24.032H17.28C18.9227 24.032 20.3627 23.7013 21.6 23.04C22.8587 22.3787 23.8827 21.472 24.672 20.32C25.4827 19.168 26.048 17.8773 26.368 16.448H26.56V32.128H26.368ZM35.552 0V13.12H35.36C35.04 10.8373 34.3573 8.71467 33.312 6.752C32.288 4.78934 30.912 3.21067 29.184 2.016C27.4773 0.800002 25.4187 0.192001 23.008 0.192001H15.68V47.808H22.08V48H0V47.808H5.76V0.192001H0V0H35.552Z" fill="currentColor"/>
+        <path d="M116.666 77.4201V64.8201H122.57C124.082 64.8201 125.234 65.1201 126.026 65.7201C126.818 66.3081 127.214 67.1001 127.214 68.0961C127.214 68.7681 127.058 69.3441 126.746 69.8241C126.434 70.2921 126.014 70.6581 125.486 70.9221C124.97 71.1741 124.406 71.3001 123.794 71.3001L124.118 70.6521C124.826 70.6521 125.462 70.7841 126.026 71.0481C126.59 71.3001 127.034 71.6721 127.358 72.1641C127.694 72.6561 127.862 73.2681 127.862 74.0001C127.862 75.0801 127.448 75.9201 126.62 76.5201C125.792 77.1201 124.562 77.4201 122.93 77.4201H116.666ZM119.006 75.5841H122.786C123.662 75.5841 124.334 75.4401 124.802 75.1521C125.27 74.8641 125.504 74.4021 125.504 73.7661C125.504 73.1421 125.27 72.6861 124.802 72.3981C124.334 72.0981 123.662 71.9481 122.786 71.9481H118.826V70.1301H122.318C123.134 70.1301 123.758 69.9861 124.19 69.6981C124.634 69.4101 124.856 68.9781 124.856 68.4021C124.856 67.8141 124.634 67.3761 124.19 67.0881C123.758 66.8001 123.134 66.6561 122.318 66.6561H119.006V75.5841Z" fill="currentColor"/>
+        <path d="M105.001 77.6001C103.273 77.6001 101.917 77.1141 100.933 76.1421C99.9611 75.1701 99.4751 73.7661 99.4751 71.9301V64.8201H101.815V71.8401C101.815 73.1361 102.091 74.0781 102.643 74.6661C103.207 75.2541 103.999 75.5481 105.019 75.5481C106.039 75.5481 106.825 75.2541 107.377 74.6661C107.929 74.0781 108.205 73.1361 108.205 71.8401V64.8201H110.509V71.9301C110.509 73.7661 110.017 75.1701 109.033 76.1421C108.061 77.1141 106.717 77.6001 105.001 77.6001Z" fill="currentColor"/>
+        <path d="M86.1034 77.4201V64.8201H88.4434V75.4401H95.0314V77.4201H86.1034Z" fill="currentColor"/>
+        <path d="M76.1356 77.6C75.1756 77.6 74.2816 77.444 73.4536 77.132C72.6376 76.808 71.9236 76.358 71.3116 75.782C70.7116 75.194 70.2436 74.504 69.9076 73.712C69.5716 72.92 69.4036 72.056 69.4036 71.12C69.4036 70.184 69.5716 69.32 69.9076 68.528C70.2436 67.736 70.7176 67.052 71.3296 66.476C71.9416 65.888 72.6556 65.438 73.4716 65.126C74.2876 64.802 75.1816 64.64 76.1536 64.64C77.1856 64.64 78.1276 64.82 78.9796 65.18C79.8316 65.528 80.5516 66.05 81.1396 66.746L79.6276 68.168C79.1716 67.676 78.6616 67.31 78.0976 67.07C77.5336 66.818 76.9216 66.692 76.2616 66.692C75.6016 66.692 74.9956 66.8 74.4436 67.016C73.9036 67.232 73.4296 67.538 73.0216 67.934C72.6256 68.33 72.3136 68.798 72.0856 69.338C71.8696 69.878 71.7616 70.472 71.7616 71.12C71.7616 71.768 71.8696 72.362 72.0856 72.902C72.3136 73.442 72.6256 73.91 73.0216 74.306C73.4296 74.702 73.9036 75.008 74.4436 75.224C74.9956 75.44 75.6016 75.548 76.2616 75.548C76.9216 75.548 77.5336 75.428 78.0976 75.188C78.6616 74.936 79.1716 74.558 79.6276 74.054L81.1396 75.494C80.5516 76.178 79.8316 76.7 78.9796 77.06C78.1276 77.42 77.1796 77.6 76.1356 77.6Z" fill="currentColor"/>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- top -->
+  <div class="top">
+    <div class="brand">
+      <svg class="logo logo-sm" viewBox="0 0 197 78" color="#18364C" role="img" aria-label="FINE Club"><use href="#finelogo"/></svg>
+    </div>
+    <div class="top-right">
+      <div class="est">Est. 2026 · Praha</div>
+      <a href="#prihlaska" class="btn btn-nav">Přihlásit se</a>
+    </div>
+  </div>
+
+  <!-- hero -->
+  <header class="hero">
+    <p class="eyebrow">Networking pro podnikatele</p>
+    <h1>Večer, kde se<br><em>dějí věci</em></h1>
+    <p class="lede">Není to konference ani kurz. Je to setkání podnikatelů, kde nové kontakty i nápady vznikají přirozeně – v rozhovoru, ne v prezentaci.</p>
+    <div class="datechip">
+      <span><b>25. 8. 2026</b></span><span class="dot"></span>
+      <span>18:00–22:00</span><span class="dot"></span>
+      <span><a href="https://www.meatbeer.cz/" target="_blank" rel="noopener">Meat Beer · Washingtonova 23</a></span>
+    </div>
+
+    <div class="countdown" id="countdown" aria-label="Odpočet do začátku akce">
+      <div class="cd-unit"><span class="cd-num" id="cd-d">00</span><span class="cd-label">dní</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-h">00</span><span class="cd-label">hodin</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-m">00</span><span class="cd-label">minut</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-s">00</span><span class="cd-label">sekund</span></div>
+    </div>
+
+    <a href="#prihlaska" class="btn btn-hero">Chci se přihlásit</a>
+  </header>
+
+  <div class="hr"></div>
+
+  <!-- pro vás / není pro vás -->
+  <section class="split">
+    <div class="col yes">
+      <span class="eyebrow">Přijďte, pokud</span>
+      <h2>Tohle je pro vás</h2>
+      <ul class="list">
+        <li>podnikáte nebo to plánujete a chcete poznat nové lidi,</li>
+        <li>hledáte kontakty, spolupracovníky nebo inspiraci,</li>
+        <li>máte konkrétní výzvu a chcete ji probrat s někým, kdo si tím prošel,</li>
+        <li>baví vás sdílet zkušenosti rovnou s druhými,</li>
+      </ul>
+    </div>
+    <div class="col no">
+      <span class="eyebrow">Raději jinam, pokud</span>
+      <h2>Tohle není pro vás</h2>
+      <ul class="list">
+        <li>čekáte přednáškový program nebo prezentace produktů,</li>
+        <li>chcete přijít a jen pasivně poslouchat – tady se mluví,</li>
+        <li>chcete prodat na místě svůj produkt,</li>
+        <li>preferujete velké akce a anonymitu davu.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- jak to probíhá -->
+  <section>
+    <div class="flow-head">
+      <span class="eyebrow">Bez programu, bez jmenovek</span>
+      <h2>Jak bude probíhat</h2>
+    </div>
+    <div class="flow">
+      <div class="step">
+        <div class="num">I</div>
+        <h3>Představení</h3>
+        <p>Každý řekne pár vět o sobě a svém byznysu. Žádné monology – jen tolik, aby ostatní věděli, s kým sedí u stolu.</p>
+      </div>
+      <div class="step">
+        <div class="num">II</div>
+        <h3>Společná diskuze</h3>
+        <p>Bavíme se o tom, co právě řešíte. Co funguje, co ne, kde jste zaseknutí. Žádná agenda, žádný moderátor.</p>
+      </div>
+      <div class="step">
+        <div class="num">III</div>
+        <h3>Téma z osudí</h3>
+        <p>Když diskuze utichne, vytáhnete téma z osudí – otázku nebo dilema, které podnikatele potkává. Rozproudí večer dál.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- bento galerie -->
+  <section>
+    <div class="gal-head">
+      <span class="eyebrow">Místo &amp; atmosféra</span>
+      <h2>Galerie</h2>
+    </div>
+    <!--
+      Fotky: vlož soubory networking-cerven-1.jpg a networking-cerven-2.jpg vedle tohoto HTML.
+      (Pokud mají jinou příponu než .jpg, uprav ji v url(...) níže.)
+    -->
+    <div class="bento bento-2">
+      <div class="tile" style="background-image:url('networking-cerven-1.jpg')"><span class="cap">Červen 2026</span></div>
+      <div class="tile" style="background-image:url('networking-cerven-2.jpg')"><span class="cap">Červen 2026</span></div>
+    </div>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- detaily -->
+  <section class="facts">
+    <div class="fact"><div class="k">Termín</div><div class="v">25. 8. 2026</div></div>
+    <div class="fact"><div class="k">Čas</div><div class="v">18:00–22:00</div></div>
+    <div class="fact"><div class="k">Místo</div><div class="v"><a href="https://www.meatbeer.cz/" target="_blank" rel="noopener">Meat Beer</a></div><div class="addr">Washingtonova 23, Praha 1</div></div>
+    <div class="fact"><div class="k">Kapacita</div><div class="v">35 osob</div></div>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- host -->
+  <section>
+    <div class="guest">
+      <span class="eyebrow">Jediná podmínka</span>
+      <h2>Jeden host s sebou</h2>
+      <p>Každý účastník přivede na večer <span class="em">jednoho hosta</span> – kamaráda, kolegu, člena rodiny, klienta, spoluzakladatele nebo kohokoli, o kom si myslíte, že by se hodil do party. Díky tomu se okruh lidí každým večerem rozšiřuje a vždy tu potkáte tváře, které jste ještě neznali. Kdo přichází jako host, zvát nikoho nemusí – ale může, a je to velmi vítané. Cílem je seznámit se s co nejvíce podnikateli a budovat pracovní i obchodní vztahy s relevantními lidmi.</p>
+    </div>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- membership / platba -->
+  <section>
+    <div class="card-head">
+      <span class="eyebrow">Rezervace místa</span>
+      <h2>Vaše vstupenka</h2>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+
+        <div class="stub">
+          <svg class="logo logo-card" viewBox="0 0 197 78" color="#EDE4D9" role="img" aria-label="FINE Club"><use href="#finelogo"/></svg>
+          <h3>Networkingový večer</h3>
+          <p class="tag">Na jméno · vstup s vlastním hostem</p>
+          <p>Vstupné neplatíte. Po zaplacení 500 Kč předem dostanete na místě kartu s předplaceným kreditem 500 Kč, který můžete projíst a propít. Nevyčerpaný kredit propadá. Když útrata přesáhne 500 Kč, rozdíl si při odchodu doplatíte sami – kartou nebo hotově.</p>
+          <div class="crule"></div>
+          <div class="meta">
+            <div><span>Místo</span><strong>Meat Beer</strong></div>
+            <div><span>Adresa</span><strong>Washingtonova 23, Praha 1</strong></div>
+            <div><span>Podmínka</span><strong>Jeden host</strong></div>
+            <div><span>Kredit</span><strong>500 Kč / osoba</strong></div>
+            <div><span>Doplatek</span><strong>Kartou i hotově</strong></div>
+            <div><span>Nevyčerpáno</span><strong>Propadá</strong></div>
+          </div>
+          <div class="serial"><span>č. 00 / 35</span><span>FC–2026–08</span></div>
+        </div>
+
+        <div class="side">
+          <p class="price">500 Kč<small>předplacený kredit</small></p>
+          <div class="crule"></div>
+
+          <!-- ZDE VLOŽ SVŮJ QR KÓD (nahraď src) -->
+          <div class="qr-slot">
+            <img src="qr-500.jpg" alt="QR kód pro platbu zálohy">
+          </div>
+
+          <div class="crule"></div>
+          <div class="meta">
+            <div><span>Účet</span><strong>1230045049/3030</strong></div>
+            <div><span>Částka</span><strong>500 Kč / osoba</strong></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="note">Místo se rezervuje až po zaplacení – totéž platí pro vašeho hosta. Kredit je předplacený a jeho nevyčerpaná část propadá.</p>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- přihláška (embed placeholder) -->
+  <section id="prihlaska">
+    <div class="form-head">
+      <span class="eyebrow">Kapacita je omezená</span>
+      <h2>Přihláška</h2>
+      <p>Přihlášení je povinné. Uveďte prosím i to, koho přivedete jako hosta. Váš host už svého hosta brát nemusí.</p>
+    </div>
+    <div class="embed">
+      <iframe data-tally-src="https://tally.so/embed/J9er24?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="2906" frameborder="0" marginheight="0" marginwidth="0" title="FINE Club – přihláška"></iframe>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <svg class="logo logo-foot" viewBox="0 0 197 78" color="#18364C" role="img" aria-label="FINE Club"><use href="#finelogo"/></svg>
+    <div class="hosts">Martina Kačerová &amp; Ondra Pospíšil</div>
+    <div class="foot-addr"><a href="https://www.meatbeer.cz/" target="_blank" rel="noopener">Meat Beer · Washingtonova 23, Praha 1</a></div>
+    <div class="fine">FINE Club · Nečekejte na změnu, buďte její součástí</div>
+  </footer>
+
+</div>
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+<script>
+(function(){
+  var target = new Date('2026-08-25T18:00:00+02:00').getTime();
+  var box = document.getElementById('countdown');
+  var d = document.getElementById('cd-d'),
+      h = document.getElementById('cd-h'),
+      m = document.getElementById('cd-m'),
+      s = document.getElementById('cd-s');
+  function pad(n){ return (n<10?'0':'') + n; }
+  function tick(){
+    var diff = target - Date.now();
+    if(diff <= 0){
+      if(box){ box.outerHTML = '<div class="cd-live">Právě probíhá</div>'; }
+      clearInterval(timer);
+      return;
+    }
+    var t = Math.floor(diff/1000);
+    d.textContent = Math.floor(t/86400);
+    h.textContent = pad(Math.floor(t%86400/3600));
+    m.textContent = pad(Math.floor(t%3600/60));
+    s.textContent = pad(t%60);
+  }
+  tick();
+  var timer = setInterval(tick, 1000);
+})();
+</script>
+</body>
+</html>

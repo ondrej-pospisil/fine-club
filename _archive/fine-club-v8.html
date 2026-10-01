@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FINE Club — Networking pro podnikatele</title>
+<meta name="description" content="Uzavřený networkingový večer pro 35 podnikatelů. Praha, 14. října 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Archivo:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16303F;
+  --ink-deep:#0E212D;
+  --body:#3B4E59;
+  --mute:#8B959B;
+  --paper:#F2EDE5;
+  --paper-2:#E8E1D6;
+  --sand:#DCD3C4;
+  --brass:#A8875A;
+  --brass-lt:#C7A97B;
+  --hair:rgba(22,48,63,.15);
+  --hair-lt:rgba(242,237,229,.2);
+  --safe:env(safe-area-inset-bottom,0px);
+  --gut:clamp(20px,5vw,88px);
+  --nav-h:64px;
+  --kh:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Cpath fill='%23fff' d='M50 4c-16 0-29 13-29 29 0 11 6 21 15 26L22 128c-1 5 2 8 7 8h42c5 0 8-3 7-8L64 59c9-5 15-15 15-26C79 17 66 4 50 4z'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--body);
+  font-family:'Archivo',system-ui,sans-serif;font-weight:300;
+  font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+
+.d1,.d2,.d3{font-family:'Fraunces',Georgia,serif;font-weight:300;color:var(--ink);letter-spacing:-.018em;margin:0}
+.d1{font-size:clamp(44px,8.2vw,112px);line-height:.95}
+.d2{font-size:clamp(31px,5vw,62px);line-height:1.03}
+.d3{font-size:clamp(23px,2.7vw,33px);line-height:1.15}
+.ital{font-style:italic}
+.dim{color:var(--mute)}
+/* postupné dobarvení nadpisu při scrollu */
+.fill .w{color:var(--mute);transition:color .55s cubic-bezier(.3,.7,.3,1)}
+.fill .w.on{color:var(--ink)}
+.dark .fill .w{color:rgba(242,237,229,.3)}
+.dark .fill .w.on{color:#F4F0E8}
+.lbl{font-family:'Archivo';font-weight:400;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--brass)}
+p{margin:0 0 1.1em}
+.lead{font-size:clamp(17px,1.9vw,20px);line-height:1.66}
+
+.shell{padding-left:var(--gut);padding-right:var(--gut)}
+.max{max-width:1400px;margin:0 auto}
+.pad{padding-top:clamp(84px,12vw,180px);padding-bottom:clamp(84px,12vw,180px)}
+
+/* ══ NAV ══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:70;height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--gut);
+  color:#fff;
+  transition:background .45s ease,color .45s ease,box-shadow .45s ease,height .45s ease;
+}
+nav.solid{
+  background:rgba(242,237,229,.94);backdrop-filter:blur(18px) saturate(1.4);
+  color:var(--ink);height:56px;box-shadow:0 1px 0 var(--hair);
+}
+nav .mark{font-family:'Fraunces',serif;font-weight:300;font-size:18px;letter-spacing:.14em;text-decoration:none;color:inherit;line-height:1}
+nav .mark em{font-style:italic;font-size:11px;letter-spacing:.02em;display:block;line-height:1;margin-bottom:3px;opacity:.6}
+nav .links{display:flex;gap:28px}
+nav a.lnk{font-family:'Archivo';font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:inherit;opacity:.72;transition:opacity .25s}
+nav a.lnk:hover{opacity:1}
+nav a.cta{
+  font-family:'Archivo';font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;
+  border:1px solid currentColor;padding:9px 18px;color:inherit;transition:background .3s,color .3s;
+}
+nav.solid a.cta:hover{background:var(--ink);color:var(--paper)}
+nav:not(.solid) a.cta:hover{background:#fff;color:var(--ink)}
+
+/* ══ HERO ══ */
+.hero{position:relative;height:100svh;min-height:620px;overflow:hidden;background:var(--ink-deep)}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;filter:saturate(.5) contrast(1.05)}
+.hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,33,45,.72) 0%,rgba(14,33,45,.12) 34%,rgba(14,33,45,.62) 74%,rgba(14,33,45,.94) 100%)}
+.hero .inner{position:absolute;inset:auto 0 0 0;padding:0 var(--gut) clamp(40px,6vw,74px);color:#fff}
+.hero .lbl{color:rgba(255,255,255,.7)}
+.hero .d1{color:#fff;margin-top:18px;max-width:16ch}
+.hero-foot{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;
+  margin-top:clamp(26px,3.6vw,46px);padding-top:22px;border-top:1px solid rgba(255,255,255,.22)}
+.hero-foot p{max-width:44ch;margin:0;color:rgba(255,255,255,.8);font-size:15.5px;line-height:1.68}
+
+/* hero — akční pás */
+.hero-act{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(12px,2vw,22px);margin-top:26px}
+.next-chip{display:inline-flex;align-items:center;gap:10px;background:var(--brass);color:#14232C;
+  font-family:'Archivo';font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:9px 15px}
+.next-chip i{width:6px;height:6px;border-radius:50%;background:#14232C;animation:pulse 2.4s ease-in-out infinite}
+.hero-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;
+  font-family:'Archivo';font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  background:#F4F0E8;color:var(--ink);border:1px solid #F4F0E8;padding:15px 28px;transition:background .3s,color .3s}
+.hero-btn:hover{background:transparent;color:#F4F0E8}
+.hero-play{display:inline-flex;align-items:center;gap:12px;text-decoration:none;
+  font-family:'Archivo';font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.85);
+  background:none;border:0;cursor:pointer;padding:0}
+.hero-play .ring{width:44px;height:44px;border:1px solid rgba(255,255,255,.6);border-radius:50%;
+  display:grid;place-items:center;transition:background .35s,border-color .35s}
+.hero-play .ring::after{content:"";width:0;height:0;margin-left:3px;
+  border-left:10px solid #fff;border-top:6.5px solid transparent;border-bottom:6.5px solid transparent}
+.hero-play:hover .ring{background:rgba(255,255,255,.16);border-color:#fff}
+@media (max-width:600px){
+  .hero-act{gap:12px}
+  .hero-btn{flex:1 1 100%;padding:16px 24px}
+}
+
+/* ══ ODPOČET ══ */
+.cd{display:flex;align-items:flex-start;gap:clamp(16px,2.4vw,34px)}
+.cd .u{text-align:center;min-width:52px}
+.cd .n{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(34px,4.6vw,60px);line-height:1;color:#fff;
+  font-variant-numeric:tabular-nums;letter-spacing:-.02em;display:block}
+.cd .l{font-family:'Archivo';font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);margin-top:9px;display:block}
+.cd .s{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(24px,3.2vw,40px);line-height:1;
+  color:rgba(255,255,255,.3);margin-top:2px}
+.cd-date{text-align:right;margin-bottom:16px;display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.cd-date span{font-family:'Archivo';font-weight:500;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-lt)}
+.cd-date b{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(19px,2.2vw,27px);
+  color:#fff;letter-spacing:-.01em;line-height:1.1}
+.cd-date i{display:none}
+.cd-live{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:clamp(24px,3.4vw,40px);color:#fff}
+
+/* ══ obecné ══ */
+.state-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,88px);align-items:end}
+.state-grid .rule{height:1px;background:var(--hair);grid-column:1/-1;margin-bottom:clamp(28px,5vw,54px)}
+.tone{background:var(--paper-2)}
+.dark{background:var(--ink);color:rgba(242,237,229,.82)}
+.dark .d1,.dark .d2,.dark .d3{color:#F4F0E8}
+.dark .lbl{color:var(--brass-lt)}
+.dark .dim{color:rgba(242,237,229,.42)}
+
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,7vw,108px);align-items:center}
+.duo.flip .fig{order:2}
+.fig{position:relative;overflow:hidden;background:var(--sand)}
+.fig img{width:100%;height:100%;object-fit:cover;transform:scale(1.1);transition:transform 1.5s cubic-bezier(.16,.84,.3,1)}
+.fig.in img{transform:scale(1)}
+.duo .txt p{max-width:46ch}
+
+/* ══ KLÍČOVÁ DÍRKA ══ */
+.keyhole{position:relative;height:280vh;background:var(--paper)}
+.kh-sticky{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--paper)}
+.kh-hint{position:absolute;left:0;right:0;top:clamp(70px,12vh,130px);text-align:center;z-index:3;
+  padding:0 var(--gut);transition:opacity .5s ease}
+.kh-hint .lbl{display:block;margin-bottom:12px}
+.kh-hint h2{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(24px,3.4vw,42px);
+  color:var(--ink);letter-spacing:-.015em;margin:0;line-height:1.1}
+.kh-reveal{position:absolute;inset:0;
+  -webkit-mask-image:var(--kh);mask-image:var(--kh);
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:center 52%;mask-position:center 52%;
+  -webkit-mask-size:14vmin;mask-size:14vmin;
+  will-change:-webkit-mask-size,mask-size}
+.kh-scene{position:absolute;inset:0;background:var(--ink-deep);overflow:hidden}
+.kh-scene img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;
+  transform:scale(1.45);transform-origin:center 52%;will-change:transform}
+.kh-scene .veil2{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 52%,rgba(14,33,45,.25),rgba(14,33,45,.88))}
+.kh-copy{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:0 clamp(24px,8vw,120px);opacity:0;transform:translateY(24px);
+  transition:opacity .7s ease,transform .9s cubic-bezier(.16,.84,.3,1)}
+.kh-copy.on{opacity:1;transform:none}
+.kh-copy .lbl{color:var(--brass-lt);margin-bottom:20px}
+.kh-copy h2{font-family:'Fraunces',serif;font-weight:300;color:#F4F0E8;margin:0;
+  font-size:clamp(30px,5.4vw,72px);line-height:1.06;letter-spacing:-.02em;max-width:18ch}
+.kh-copy h2 em{font-style:italic}
+.kh-copy p{margin:26px auto 0;max-width:52ch;color:rgba(242,237,229,.78);font-size:clamp(15px,1.8vw,18px)}
+@media (max-width:980px){
+  .keyhole{height:220vh}
+  .kh-reveal{-webkit-mask-position:center 50%;mask-position:center 50%}
+}
+@media (prefers-reduced-motion:reduce){
+  .keyhole{height:auto}
+  .kh-sticky{position:static;height:auto;min-height:70svh}
+  .kh-reveal{-webkit-mask-image:none!important;mask-image:none!important}
+  .kh-hint{display:none}
+  .kh-copy{opacity:1;transform:none;position:relative;padding:clamp(60px,10vw,120px) var(--gut)}
+  .kh-scene img{transform:none}
+}
+
+/* ══ VIDEO — přechod rozšířením ══ */
+.vstage{position:relative;height:220vh}
+.vsticky{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;
+  overflow:hidden;background:var(--paper)}
+.vgrow{position:relative;margin:0 auto;width:26vw;height:34vh;max-width:100%;overflow:hidden;
+  will-change:width,height;background:var(--ink-deep)}
+.vgrow .kicker{position:absolute;left:0;right:0;bottom:clamp(24px,4vw,52px);z-index:4;text-align:center;
+  padding:0 24px;opacity:0;transition:opacity .6s ease}
+.vgrow.wide .kicker{opacity:1}
+.vgrow .kicker h2{font-family:'Fraunces',serif;font-weight:300;color:#F4F0E8;margin:0;
+  font-size:clamp(24px,3.6vw,46px);letter-spacing:-.015em;line-height:1.08}
+.vgrow .kicker .lbl{display:block;color:var(--brass-lt);margin-bottom:12px}
+.vcap{text-align:center;margin-top:26px;font-family:'Archivo';font-size:10.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--mute);transition:opacity .5s ease}
+
+/* ══ VIDEO ══ */
+.vwrap{position:relative;aspect-ratio:16/9;background:var(--ink-deep);overflow:hidden;cursor:pointer}
+.vwrap img{width:100%;height:100%;object-fit:cover;opacity:.62;transition:opacity .5s,transform 1.4s cubic-bezier(.16,.84,.3,1)}
+.vwrap:hover img{opacity:.5;transform:scale(1.03)}
+.vwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:#F4F0E8}
+.play .ring{width:clamp(64px,7vw,92px);height:clamp(64px,7vw,92px);border:1px solid rgba(244,240,232,.7);border-radius:50%;
+  display:grid;place-items:center;transition:background .4s,border-color .4s}
+.vwrap:hover .ring{background:rgba(244,240,232,.14);border-color:#F4F0E8}
+.play .ring::after{content:"";width:0;height:0;margin-left:4px;
+  border-left:14px solid #F4F0E8;border-top:9px solid transparent;border-bottom:9px solid transparent}
+.play span{font-family:'Archivo';font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(244,240,232,.8)}
+
+/* ══ PROFILY ZAKLADATELŮ ══ */
+.people{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,44px);margin-top:clamp(32px,4vw,52px)}
+.person .fig{aspect-ratio:1/1;margin-bottom:18px}
+.person h4{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(20px,2.2vw,26px);
+  color:var(--ink);margin:0 0 4px;letter-spacing:-.01em}
+.person .role{font-family:'Archivo';font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
+.person p{font-size:14.5px;margin:0 0 14px;max-width:34ch}
+.li{display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+  font-family:'Archivo';font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
+  border-bottom:1px solid var(--hair);padding-bottom:3px;transition:border-color .3s}
+.li:hover{border-color:var(--brass)}
+.li svg{width:13px;height:13px;fill:currentColor}
+
+.li-row{display:flex;flex-wrap:wrap;gap:22px;margin-top:20px}
+.sig{margin-top:32px;font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:21px;color:var(--ink)}
+.dark .sig{color:#F4F0E8}
+.sig span{display:block;font-family:'Archivo';font-style:normal;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;opacity:.55;margin-top:8px}
+
+/* ══ HORIZONTÁLNÍ PRŮBĚH ══ */
+/* ══ PRŮBĚH — timeline ══ */
+.stage .lead-in{max-width:36ch;margin-top:20px}
+.tl{position:relative;margin-top:clamp(44px,6vw,80px);padding-left:clamp(56px,7vw,110px)}
+.tl .spine{position:absolute;left:clamp(14px,2vw,28px);top:8px;bottom:8px;width:1px;background:rgba(199,169,123,.25)}
+.tl .spine i{position:absolute;left:0;top:0;width:1px;background:var(--brass-lt);height:0;transition:height .2s linear}
+.tlrow{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);
+  align-items:center;padding-bottom:clamp(50px,7vw,100px)}
+.tlrow:last-child{padding-bottom:0}
+.tlrow .node{position:absolute;left:calc(clamp(56px,7vw,110px)*-1 + clamp(14px,2vw,28px) - 5px);top:calc(50% - 6px);
+  width:11px;height:11px;border-radius:50%;border:1px solid var(--brass-lt);background:var(--ink);
+  transition:background .5s ease,transform .5s ease}
+.tlrow.in .node{background:var(--brass-lt);transform:scale(1.25)}
+.tlrow .stamp{position:absolute;left:calc(clamp(56px,7vw,110px)*-1);top:calc(50% + 16px);
+  writing-mode:vertical-rl;font-family:'Archivo';font-size:9.5px;letter-spacing:.24em;
+  color:rgba(242,237,229,.4);text-transform:uppercase}
+.tlrow .fig{aspect-ratio:5/4}
+.tlrow:nth-child(even) .fig{order:2}
+.tlrow .time{font-family:'Archivo';font-weight:500;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-lt)}
+.tlrow .num{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(30px,3.4vw,44px);
+  color:transparent;-webkit-text-stroke:1px rgba(199,169,123,.6);line-height:1;margin-bottom:14px}
+.tlrow .t{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(24px,2.9vw,38px);
+  color:#F4F0E8;margin:10px 0 12px;letter-spacing:-.015em}
+.tlrow p{font-size:15px;margin:0;max-width:40ch}
+
+/* ══ KLÍČOVÁ DÍRKA ══ */
+.keyhole{position:relative;height:280vh;background:var(--paper)}
+.kh-sticky{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--paper)}
+.kh-hint{position:absolute;left:0;right:0;top:clamp(70px,12vh,130px);text-align:center;z-index:3;
+  padding:0 var(--gut);transition:opacity .5s ease}
+.kh-hint .lbl{display:block;margin-bottom:12px}
+.kh-hint h2{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(24px,3.4vw,42px);
+  color:var(--ink);letter-spacing:-.015em;margin:0;line-height:1.1}
+.kh-reveal{position:absolute;inset:0;
+  -webkit-mask-image:var(--kh);mask-image:var(--kh);
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:center 52%;mask-position:center 52%;
+  -webkit-mask-size:14vmin;mask-size:14vmin;
+  will-change:-webkit-mask-size,mask-size}
+.kh-scene{position:absolute;inset:0;background:var(--ink-deep);overflow:hidden}
+.kh-scene img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;
+  transform:scale(1.45);transform-origin:center 52%;will-change:transform}
+.kh-scene .veil2{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 52%,rgba(14,33,45,.25),rgba(14,33,45,.88))}
+.kh-copy{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:0 clamp(24px,8vw,120px);opacity:0;transform:translateY(24px);
+  transition:opacity .7s ease,transform .9s cubic-bezier(.16,.84,.3,1)}
+.kh-copy.on{opacity:1;transform:none}
+.kh-copy .lbl{color:var(--brass-lt);margin-bottom:20px}
+.kh-copy h2{font-family:'Fraunces',serif;font-weight:300;color:#F4F0E8;margin:0;
+  font-size:clamp(30px,5.4vw,72px);line-height:1.06;letter-spacing:-.02em;max-width:18ch}
+.kh-copy h2 em{font-style:italic}
+.kh-copy p{margin:26px auto 0;max-width:52ch;color:rgba(242,237,229,.78);font-size:clamp(15px,1.8vw,18px)}
+@media (max-width:980px){
+  .keyhole{height:220vh}
+  .kh-reveal{-webkit-mask-position:center 50%;mask-position:center 50%}
+}
+@media (prefers-reduced-motion:reduce){
+  .keyhole{height:auto}
+  .kh-sticky{position:static;height:auto;min-height:70svh}
+  .kh-reveal{-webkit-mask-image:none!important;mask-image:none!important}
+  .kh-hint{display:none}
+  .kh-copy{opacity:1;transform:none;position:relative;padding:clamp(60px,10vw,120px) var(--gut)}
+  .kh-scene img{transform:none}
+}
+
+/* ══ VIDEO — přechod rozšířením ══ */
+.vstage{position:relative;height:220vh}
+.vsticky{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;
+  overflow:hidden;background:var(--paper)}
+.vgrow{position:relative;margin:0 auto;width:26vw;height:34vh;max-width:100%;overflow:hidden;
+  will-change:width,height;background:var(--ink-deep)}
+.vgrow .kicker{position:absolute;left:0;right:0;bottom:clamp(24px,4vw,52px);z-index:4;text-align:center;
+  padding:0 24px;opacity:0;transition:opacity .6s ease}
+.vgrow.wide .kicker{opacity:1}
+.vgrow .kicker h2{font-family:'Fraunces',serif;font-weight:300;color:#F4F0E8;margin:0;
+  font-size:clamp(24px,3.6vw,46px);letter-spacing:-.015em;line-height:1.08}
+.vgrow .kicker .lbl{display:block;color:var(--brass-lt);margin-bottom:12px}
+.vcap{text-align:center;margin-top:26px;font-family:'Archivo';font-size:10.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--mute);transition:opacity .5s ease}
+
+/* ══ VIDEO ══ */
+.vwrap{position:relative;aspect-ratio:16/9;background:var(--ink-deep);overflow:hidden;cursor:pointer}
+.vwrap img{width:100%;height:100%;object-fit:cover;opacity:.62;transition:opacity .5s,transform 1.4s cubic-bezier(.16,.84,.3,1)}
+.vwrap:hover img{opacity:.5;transform:scale(1.03)}
+.vwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:#F4F0E8}
+.play .ring{width:clamp(64px,7vw,92px);height:clamp(64px,7vw,92px);border:1px solid rgba(244,240,232,.7);border-radius:50%;
+  display:grid;place-items:center;transition:background .4s,border-color .4s}
+.vwrap:hover .ring{background:rgba(244,240,232,.14);border-color:#F4F0E8}
+.play .ring::after{content:"";width:0;height:0;margin-left:4px;
+  border-left:14px solid #F4F0E8;border-top:9px solid transparent;border-bottom:9px solid transparent}
+.play span{font-family:'Archivo';font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(244,240,232,.8)}
+
+/* ══ PROFILY ZAKLADATELŮ ══ */
+.people{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,44px);margin-top:clamp(32px,4vw,52px)}
+.person .fig{aspect-ratio:1/1;margin-bottom:18px}
+.person h4{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(20px,2.2vw,26px);
+  color:var(--ink);margin:0 0 4px;letter-spacing:-.01em}
+.person .role{font-family:'Archivo';font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
+.person p{font-size:14.5px;margin:0 0 14px;max-width:34ch}
+.li{display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+  font-family:'Archivo';font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
+  border-bottom:1px solid var(--hair);padding-bottom:3px;transition:border-color .3s}
+.li:hover{border-color:var(--brass)}
+.li svg{width:13px;height:13px;fill:currentColor}
+
+.li-row{display:flex;flex-wrap:wrap;gap:22px;margin-top:20px}
+.sig{margin-top:32px;font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:21px;color:var(--ink)}
+.dark .sig{color:#F4F0E8}
+.sig span{display:block;font-family:'Archivo';font-style:normal;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;opacity:.55;margin-top:8px}
+
+/* ══ HORIZONTÁLNÍ PRŮBĚH ══ */
+/* ══ PRŮBĚH — přesazená sazba ══ */
+.stage{position:relative}
+.stage .lead-in{max-width:34ch;margin-top:20px}
+.beats{position:relative;margin-top:clamp(40px,6vw,80px);display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,2vw,28px)}
+.beat{position:relative}
+.beat:nth-child(1){grid-column:1/6}
+.beat:nth-child(2){grid-column:7/12;margin-top:clamp(60px,11vw,190px)}
+.beat:nth-child(3){grid-column:3/9;margin-top:clamp(-40px,-4vw,0px)}
+.beat .fig{aspect-ratio:4/5}
+.beat:nth-child(2) .fig{aspect-ratio:3/4}
+.beat:nth-child(3) .fig{aspect-ratio:16/10}
+.beat .idx{position:absolute;top:0;left:0;z-index:2;pointer-events:none;
+  font-family:'Fraunces',serif;font-weight:300;font-size:clamp(46px,6vw,86px);line-height:1;
+  color:transparent;-webkit-text-stroke:1px rgba(199,169,123,.75);letter-spacing:-.02em;
+  transform:translate(-14px,-42%)}
+.beat .idx b{font-weight:300}
+  font-family:'Fraunces',serif;font-style:italic;font-weight:300;
+  font-size:clamp(72px,11vw,170px);line-height:1;color:var(--brass-lt);opacity:.9;
+  text-shadow:0 12px 40px rgba(14,33,45,.6)}
+.beat:nth-child(2) .idx{left:auto;right:0;transform:translate(14px,-42%)}
+.beat .body{padding-top:22px;max-width:38ch}
+.beat:nth-child(2) .body{margin-left:auto;text-align:right}
+.beat .time{font-family:'Archivo';font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-lt)}
+.beat .t{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(22px,2.5vw,32px);color:#F4F0E8;margin:8px 0 10px;letter-spacing:-.012em}
+.beat p{font-size:14.8px;margin:0}
+.beat .thread{position:absolute;left:50%;top:100%;width:1px;height:clamp(40px,7vw,110px);
+  background:linear-gradient(180deg,var(--brass-lt),transparent);opacity:.5}
+.beat:nth-child(3) .thread{display:none}
+
+
+/* ══ GALERIE / TERMÍNY ══ */
+.gal-note{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  border-bottom:1px solid var(--hair);padding-bottom:14px;margin-bottom:clamp(24px,4vw,44px)}
+.gal{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,1.6vw,22px);align-items:start}
+.g-a{grid-column:1/6}.g-b{grid-column:7/13;margin-top:clamp(36px,6vw,100px)}
+.g-c{grid-column:1/5}.g-d{grid-column:5/9;margin-top:clamp(20px,4vw,56px)}.g-e{grid-column:9/13}
+.cap{font-family:'Archivo';font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-top:10px}
+
+/* budoucí termíny */
+/* ══ GALERIE MINULÝCH VEČERŮ ══ */
+.tabs{display:flex;gap:26px;border-bottom:1px solid var(--hair);margin-bottom:clamp(26px,4vw,44px);flex-wrap:wrap}
+.tab{background:none;border:0;cursor:pointer;padding:0 0 16px;position:relative;
+  font-family:'Archivo';font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);transition:color .3s}
+.tab.on{color:var(--ink)}
+.tab::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--brass);
+  transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.16,.84,.3,1)}
+.tab.on::after{transform:scaleX(1)}
+.mosaic{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:clamp(110px,13vw,180px);gap:clamp(10px,1.4vw,18px)}
+.mosaic[hidden]{display:none}
+.mtile{position:relative;overflow:hidden;background:var(--sand);cursor:default}
+.mtile img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.16,.84,.3,1),opacity .4s}
+.mtile:hover img{transform:scale(1.05)}
+.mtile.vid{cursor:pointer}
+.mtile.vid img{opacity:.72}
+.mtile.vid::after{content:"";position:absolute;left:50%;top:50%;width:clamp(38px,4vw,54px);height:clamp(38px,4vw,54px);
+  transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.8);border-radius:50%;
+  background:rgba(14,33,45,.35) no-repeat center;transition:background .35s,border-color .35s}
+.mtile.vid::before{content:"";position:absolute;left:calc(50% + 2px);top:50%;transform:translate(-50%,-50%);z-index:2;
+  border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent}
+.mtile.vid:hover::after{background:rgba(244,240,232,.22)}
+.mtile iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3}
+.mtile .mcap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:12px 14px;
+  font-family:'Archivo';font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#F4F0E8;
+  background:linear-gradient(0deg,rgba(14,33,45,.8),transparent);pointer-events:none}
+.m-a{grid-column:span 4;grid-row:span 2}
+.m-b{grid-column:span 2;grid-row:span 2}
+.m-c{grid-column:span 2}
+.m-d{grid-column:span 2}
+.m-e{grid-column:span 2}
+.m-f{grid-column:span 3;grid-row:span 2}
+.m-g{grid-column:span 3}
+
+/* ══ DALŠÍ TERMÍNY — výrazné karty ══ */
+.dates{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,28px)}
+.dcard{position:relative;background:var(--ink);color:rgba(242,237,229,.8);
+  padding:clamp(28px,3.6vw,46px);overflow:hidden;
+  transition:transform .5s cubic-bezier(.16,.84,.3,1),box-shadow .5s ease}
+.dcard:hover{transform:translateY(-6px);box-shadow:0 40px 70px -50px rgba(14,33,45,.8)}
+.dcard.next{background:linear-gradient(150deg,#1B3A4C 0%,#0E212D 100%)}
+.dcard .ghost{position:absolute;right:-.06em;bottom:-.34em;font-family:'Fraunces',serif;font-weight:300;
+  font-size:clamp(120px,17vw,240px);line-height:1;color:rgba(199,169,123,.09);pointer-events:none;letter-spacing:-.04em}
+.dcard .badge{display:inline-flex;align-items:center;gap:9px;
+  font-family:'Archivo';font-weight:500;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  background:var(--brass);border:1px solid var(--brass);color:#14232C;padding:9px 16px;margin-bottom:24px}
+.dcard .badge i{background:#14232C;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+.dcard.next{outline:1px solid rgba(199,169,123,.45);outline-offset:0}
+.dcard .badge.muted{background:transparent;border-color:rgba(242,237,229,.28);color:rgba(242,237,229,.55)}
+.dcard .badge.muted i{animation:none}
+.dcard .badge i{width:6px;height:6px;border-radius:50%;background:var(--brass-lt);display:block}
+.dcard .badge.muted i{background:rgba(242,237,229,.45)}
+.dcard .dt{position:relative;z-index:1;font-family:'Fraunces',serif;font-weight:300;
+  font-size:clamp(34px,4.6vw,58px);line-height:1;color:#F4F0E8;letter-spacing:-.02em}
+.dcard .dt em{font-style:italic;font-size:.5em;display:block;margin-top:10px;color:var(--brass-lt);letter-spacing:0}
+.dcard .rows{position:relative;z-index:1;margin-top:28px;padding-top:22px;border-top:1px solid rgba(199,169,123,.28)}
+.dcard .rows div{display:flex;justify-content:space-between;gap:16px;padding:7px 0;font-size:14px}
+.dcard .rows span:first-child{color:rgba(242,237,229,.5);font-family:'Archivo';font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding-top:3px}
+.dcard .rows span:last-child{text-align:right;color:#F4F0E8}
+.dcard .go{position:relative;z-index:1;display:inline-block;margin-top:26px;text-decoration:none;
+  font-family:'Archivo';font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#F4F0E8;
+  border-bottom:1px solid var(--brass)}
+.dcard .go.off{color:rgba(242,237,229,.45);border-color:rgba(242,237,229,.25);pointer-events:none}
+
+/* ══ REFERENCE ══ */
+.quote{border-top:1px solid var(--hair-lt);padding:clamp(28px,4vw,50px) 0;
+  display:grid;grid-template-columns:1fr 2fr;gap:clamp(20px,4vw,60px);align-items:start}
+.quote:last-of-type{border-bottom:1px solid var(--hair-lt)}
+.quote .who{font-family:'Archivo';font-size:12px;color:rgba(242,237,229,.6);line-height:1.6}
+.quote .who b{display:block;font-weight:400;font-size:14px;color:#F4F0E8}
+.qavatar{width:56px;height:56px;border-radius:50%;object-fit:cover;margin-bottom:14px;
+  border:1px solid rgba(199,169,123,.4)}
+.stars{display:flex;gap:4px;margin-bottom:12px}
+.stars svg{width:13px;height:13px;fill:var(--brass-lt)}
+.qhead{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:16px}
+.quote blockquote{margin:0;font-family:'Fraunces',serif;font-weight:300;
+  font-size:clamp(21px,2.6vw,32px);line-height:1.32;color:#F4F0E8;letter-spacing:-.012em;max-width:27ch}
+
+/* ══ VSTUPENKA ══ */
+.ticket{
+  position:relative;display:grid;grid-template-columns:1.5fr .9fr;
+  background:var(--ink);color:rgba(242,237,229,.85);
+  box-shadow:0 60px 90px -60px rgba(14,33,45,.75);
+  --notch:22px;
+}
+.ticket::after{
+  content:"";position:absolute;inset:12px;border:1px solid rgba(199,169,123,.32);pointer-events:none;z-index:3;
+}
+.t-main{padding:clamp(30px,4.2vw,54px)}
+.t-stub{padding:clamp(30px,4.2vw,54px);text-align:center;position:relative;display:flex;flex-direction:column;justify-content:center}
+/* perforace */
+.perf{position:absolute;top:0;bottom:0;left:0;width:1px;
+  background:repeating-linear-gradient(180deg,rgba(199,169,123,.55) 0 7px,transparent 7px 15px)}
+.notch{position:absolute;left:calc(var(--notch)*-.5);width:var(--notch);height:var(--notch);border-radius:50%;background:var(--paper);z-index:4}
+.notch.top{top:calc(var(--notch)*-.5)}
+.notch.bot{bottom:calc(var(--notch)*-.5)}
+.t-eyebrow{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding-bottom:18px;border-bottom:1px solid rgba(199,169,123,.3);margin-bottom:26px}
+.t-eyebrow span{font-family:'Archivo';font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-lt)}
+.ticket h3{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(26px,3.2vw,40px);color:#F4F0E8;margin:0 0 8px;letter-spacing:-.015em}
+.ticket .sub{font-family:'Archivo';font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass-lt);margin-bottom:26px}
+.ticket p{font-size:14.8px;line-height:1.7;max-width:48ch;color:rgba(242,237,229,.78)}
+.t-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 24px;margin-top:30px;
+  padding-top:26px;border-top:1px solid rgba(199,169,123,.3)}
+.t-meta dt{font-family:'Archivo';font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,237,229,.5);margin-bottom:6px}
+.t-meta dd{margin:0;font-family:'Fraunces',serif;font-weight:300;font-size:17px;color:#F4F0E8;line-height:1.25}
+.t-serial{display:flex;justify-content:space-between;margin-top:30px;
+  font-family:'Archivo';font-size:10px;letter-spacing:.18em;color:rgba(242,237,229,.42)}
+.t-amount{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(42px,5.4vw,64px);line-height:.95;color:#F4F0E8;letter-spacing:-.02em}
+.t-amount small{display:block;font-family:'Archivo';font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass-lt);margin-top:12px}
+.qr{width:132px;margin:26px auto 0;background:#F4F0E8;padding:10px}
+.t-acct{margin-top:22px;font-family:'Archivo';font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,237,229,.5)}
+.t-acct b{display:block;font-family:'Fraunces',serif;font-weight:300;font-size:19px;letter-spacing:.02em;color:#F4F0E8;margin-top:6px;text-transform:none}
+.t-note{max-width:62ch;margin:26px 0 0;font-size:14px;color:var(--mute)}
+
+/* ══ FAQ ══ */
+.faq{border-top:1px solid var(--hair)}
+.faq details{border-bottom:1px solid var(--hair)}
+.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr 2fr;gap:clamp(20px,4vw,60px);
+  padding:26px 0;font-family:'Fraunces',serif;font-weight:300;font-size:clamp(19px,2.1vw,24px);color:var(--ink);letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";justify-self:end;grid-column:2;font-family:'Archivo';font-weight:300;font-size:20px;color:var(--mute)}
+.faq details[open] summary::after{content:"–"}
+.faq summary>span{grid-column:1}
+.faq .ans{display:grid;grid-template-columns:1fr 2fr;gap:clamp(20px,4vw,60px);padding:0 0 30px}
+.faq .ans p{grid-column:2;margin:0;max-width:58ch;font-size:15.5px}
+
+/* ══ REGISTRACE ══ */
+#prihlaska{background:var(--paper-2)}
+.reg{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(28px,5vw,76px);align-items:start}
+.reg .side p{max-width:34ch}
+.form-card{background:#FBF8F3;padding:clamp(16px,2.4vw,30px);box-shadow:0 30px 60px -45px rgba(14,33,45,.5)}
+.form-card iframe{width:100%;border:0;display:block}
+.spots{margin-top:28px;font-family:'Archivo';font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
+
+footer{padding:clamp(48px,7vw,86px) var(--gut) calc(110px + var(--safe));border-top:1px solid var(--hair)}
+.foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-end}
+.foot-grid .big{font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:clamp(21px,3vw,32px);color:var(--ink)}
+.foot-grid .r{text-align:right;font-size:13.5px;color:var(--mute)}
+.foot-grid a{text-decoration:none;border-bottom:1px solid var(--hair)}
+
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:80;display:none;align-items:center;gap:14px;
+  padding:13px 20px calc(13px + var(--safe));background:rgba(14,33,45,.97);backdrop-filter:blur(16px);
+  transform:translateY(130%);transition:transform .5s cubic-bezier(.2,.85,.3,1)}
+.dock.show{transform:none}
+.dock .i{flex:1;min-width:0;color:#fff}
+.dock .i b{display:block;font-family:'Fraunces',serif;font-weight:300;font-size:17px;line-height:1.2}
+.dock .i span{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-lt);margin-top:2px}
+.dock a{flex:none;background:var(--paper);color:var(--ink);text-decoration:none;padding:14px 20px;
+  font-family:'Archivo';font-size:10.5px;letter-spacing:.2em;text-transform:uppercase}
+
+/* animace */
+.rise{display:block;overflow:hidden}
+.rise>span{display:block;transform:translateY(105%);transition:transform 1.05s cubic-bezier(.16,.84,.3,1)}
+.rise.in>span{transform:none}
+.rise:nth-child(2)>span{transition-delay:.09s}
+.rise:nth-child(3)>span{transition-delay:.18s}
+.fade{opacity:0;transform:translateY(14px);transition:opacity 1s ease,transform 1s cubic-bezier(.16,.84,.3,1)}
+.fade.in{opacity:1;transform:none}
+.d-1{transition-delay:.1s}.d-2{transition-delay:.2s}.d-3{transition-delay:.3s}
+.wipe{clip-path:inset(0 100% 0 0);transition:clip-path 1.1s cubic-bezier(.16,.84,.3,1)}
+.wipe.in{clip-path:inset(0 0 0 0)}
+
+:focus-visible{outline:1px solid var(--brass);outline-offset:4px}
+
+@media (max-width:980px){
+  nav .links{display:none}
+  nav a.cta{display:none}
+  nav.solid{height:52px}
+  .hero-foot{grid-template-columns:1fr}
+  .cd-date{align-items:flex-start;text-align:left}
+  .cd .u{min-width:44px}
+  .state-grid,.duo,.reg{grid-template-columns:1fr}
+  .duo.flip .fig{order:0}
+  .quote{grid-template-columns:1fr}
+  .quote .who{order:2}
+  .faq summary,.faq .ans{grid-template-columns:1fr}
+  .faq summary::after{grid-column:1;margin-top:-34px}
+  .faq .ans p{grid-column:1}
+  .gal{grid-template-columns:repeat(6,1fr)}
+  .g-a{grid-column:1/5}.g-b{grid-column:2/7;margin-top:0}
+  .g-c{grid-column:1/4}.g-d{grid-column:4/7;margin-top:0}.g-e{grid-column:2/6}
+  .ticket{grid-template-columns:1fr}
+  .perf{left:0;right:0;top:auto;bottom:0;width:auto;height:1px;
+    background:repeating-linear-gradient(90deg,rgba(199,169,123,.55) 0 7px,transparent 7px 15px)}
+  .notch{left:auto}
+  .notch.top{top:auto;bottom:calc(var(--notch)*-.5);left:calc(var(--notch)*-.5)}
+  .notch.bot{bottom:calc(var(--notch)*-.5);right:calc(var(--notch)*-.5)}
+  .t-meta{grid-template-columns:1fr 1fr}
+  .dock{display:flex}
+  /* horizontální scroll → vertikální na mobilu */
+  .tl{padding-left:38px}
+  .tl .spine{left:6px}
+  .tlrow{grid-template-columns:1fr;gap:20px;padding-bottom:52px}
+  .tlrow:nth-child(even) .fig{order:0}
+  .tlrow .node{left:-38px;top:8px}
+  .tlrow .stamp{display:none}
+  .dates{grid-template-columns:1fr}
+  .mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}
+  .m-a{grid-column:span 2;grid-row:span 2}
+  .m-b,.m-f{grid-column:span 2;grid-row:span 2}
+  .m-c,.m-d,.m-e,.m-g{grid-column:span 1;grid-row:span 1}
+  .vstage{height:170vh}
+  .people{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rise>span,.fade,.wipe,.fig img{transition:none!important;transform:none!important;opacity:1!important;clip-path:none!important}
+  .dock{transition:none}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="mark"><em>The</em>FINE CLUB</a>
+  <div class="links">
+    <a href="#vecer" class="lnk">Večer</a>
+    <a href="#vztahy" class="lnk">Proč</a>
+    <a href="#prubeh" class="lnk">Průběh</a>
+    <a href="#video" class="lnk">Video</a>
+    <a href="#galerie" class="lnk">Galerie</a>
+    <a href="#vstupenka" class="lnk">Vstupenka</a>
+  </div>
+  <a href="#prihlaska" class="cta">Rezervovat</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <video autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg">
+    <source src="hero.mp4" type="video/mp4">
+  </video>
+  <div class="veil"></div>
+  <div class="inner">
+    <p class="lbl fade in">Uzavřený večer pro 35 podnikatelů — Praha</p>
+    <h1 class="d1">
+      <span class="rise in"><span>Rozhovory,</span></span>
+      <span class="rise in"><span>ze kterých <em class="ital">něco</em></span></span>
+      <span class="rise in"><span>zbyde.</span></span>
+    </h1>
+    <div class="hero-foot fade in d-3">
+      <div>
+        <p>Bez pódia, bez jmenovek, bez prezentací. Jeden dlouhý stůl, dobré jídlo a lidé, kteří řeší to samé co vy.</p>
+        <div class="hero-act">
+          <a href="#prihlaska" class="hero-btn">Rezervovat místo</a>
+          <a href="#video" class="hero-play"><span class="ring"></span>Sestřih z večera</a>
+        </div>
+      </div>
+      <div>
+        <div class="cd-date"><i></i><span>Nejbližší termín</span><b>středa 14. října 2026</b></div>
+        <div class="cd" id="cd">
+          <div class="u"><span class="n" id="cd-d">—</span><span class="l">dní</span></div>
+          <div class="s">/</div>
+          <div class="u"><span class="n" id="cd-h">—</span><span class="l">hodin</span></div>
+          <div class="s">/</div>
+          <div class="u"><span class="n" id="cd-m">—</span><span class="l">minut</span></div>
+          <div class="s">/</div>
+          <div class="u"><span class="n" id="cd-s">—</span><span class="l">sekund</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- KLÍČOVÁ DÍRKA -->
+<section class="keyhole" id="vztahy">
+  <div class="kh-sticky">
+    <div class="kh-hint" id="khHint">
+      <span class="lbl">Za dveřmi</span>
+      <h2>Scrollujte dál</h2>
+    </div>
+    <div class="kh-reveal" id="khReveal">
+      <div class="kh-scene">
+        <img src="vztahy.jpg" alt="" id="khImg">
+        <div class="veil2"></div>
+        <div class="kh-copy" id="khCopy">
+          <span class="lbl">Na čem stavíme</span>
+          <h2>Vztahy jsou klíč. K byznysu <em>i k životu.</em></h2>
+          <p>Žádná strategie, žádný nástroj ani kampaň nenahradí člověka, který vám zvedne telefon. Nejlepší zakázky, společníci i rady přicházejí od lidí, které znáte — a kteří znají vás. Přesně proto FINE Club existuje.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="tone shell pad" id="vecer">
+  <div class="max">
+    <div class="state-grid">
+      <div class="rule"></div>
+      <h2 class="d2 fill" data-fill>
+        Networking, který nepůsobí jako networking.
+      </h2>
+      <div class="fade d-1">
+        <p class="lead">Sejde se 35 lidí, kteří podnikají. Každý řekne pár vět o tom, co dělá a co právě řeší. Pak už se jen mluví — o cenotvorbě, o lidech, o tom, co nevyšlo.</p>
+        <p class="lead">Nikdo nic neprodává. To je jediné pravidlo, které tu opravdu vymáháme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLOVO ZAKLADATELŮ -->
+<section class="shell pad">
+  <div class="max">
+    <div class="duo">
+      <div class="fig wipe" style="aspect-ratio:4/5"><img src="zakladatele.jpg" alt="Martina Kačerová a Ondra Pospíšil"></div>
+      <div class="txt">
+        <p class="lbl fade">Slovo zakladatelů</p>
+        <h2 class="d2" style="margin-top:18px">
+          <span class="rise"><span>Chyběl nám večer,</span></span>
+          <span class="rise"><span>kam se jde bez</span></span>
+          <span class="rise"><span>pitch decku.</span></span>
+        </h2>
+        <div class="fade d-2" style="margin-top:26px">
+          <p>Oba podnikáme a oba známe ten pocit: jmenovka na klopě, třetí prezentace v řadě, hrst letáků cestou domů. Nejlepší rozhovory se přitom vždycky odehrály jinde — až po večeři, s lidmi, kteří mají stejné starosti.</p>
+          <p>FINE Club je pokus zopakovat ten moment záměrně. Malá skupina, nikdo neprodává, každý přivede jednoho člověka, za kterého se zaručí. U stolu je tak vždycky někdo nový a nikdy nikdo náhodný.</p>
+          <div class="sig">Martina Kačerová &amp; Ondra Pospíšil<span>Zakladatelé FINE Club</span></div>
+          <div class="li-row">
+            <a class="li" href="https://www.linkedin.com/in/martina-kacerova/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.32-2.02-3.32-2.02 0-2.33 1.58-2.33 3.21V21h-4z"/></svg> Martina</a>
+            <a class="li" href="https://www.linkedin.com/in/ondra-pospisil/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.32-2.02-3.32-2.02 0-2.33 1.58-2.33 3.21V21h-4z"/></svg> Ondra</a>
+          </div>
+        </div>
+              </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRŮBĚH -->
+<section class="dark shell pad stage" id="prubeh">
+  <div class="max">
+    <h2 class="d2 fill" data-fill style="max-width:15ch">Tři momenty, ze kterých se večer skládá.</h2>
+    <p class="lead-in fade" style="color:rgba(242,237,229,.6)">Program je záměrně krátký. Zbytek času patří vám.</p>
+
+    <div class="tl">
+      <div class="spine"><i id="spine"></i></div>
+
+      <article class="tlrow fade">
+        <span class="node"></span><span class="stamp">18:00</span>
+        <div class="fig wipe"><img src="prubeh-1.jpg" alt=""></div>
+        <div class="body">
+          <div class="num">01</div>
+          <div class="time">18:00 — 19:00</div>
+          <h3 class="t">Vzájemné představení</h3>
+          <p>Každý řekne pár vět o sobě a svém byznysu. Žádné monology, jen tolik, aby ostatní věděli, s kým sedí u stolu.</p>
+        </div>
+      </article>
+
+      <article class="tlrow fade">
+        <span class="node"></span><span class="stamp">19:00</span>
+        <div class="fig wipe"><img src="prubeh-2.jpg" alt=""></div>
+        <div class="body">
+          <div class="num">02</div>
+          <div class="time">19:00 — 20:30</div>
+          <h3 class="t">Networking</h3>
+          <p>Volný prostor na rozhovory. Co funguje, co ne, kde jste zaseknutí. Bez agendy, bez moderátora, bez pódia.</p>
+        </div>
+      </article>
+
+      <article class="tlrow fade">
+        <span class="node"></span><span class="stamp">20:30</span>
+        <div class="fig wipe"><img src="prubeh-3.jpg" alt=""></div>
+        <div class="body">
+          <div class="num">03</div>
+          <div class="time">20:30 — 22:00</div>
+          <h3 class="t">Večeře</h3>
+          <p>Sedneme si ke společnému stolu. Tady se rozhovory z předchozích hodin nejčastěji promění v něco konkrétního.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRAVIDLO HOSTA -->
+<section class="shell pad">
+  <div class="max">
+    <div class="duo flip">
+      <div class="fig wipe" style="aspect-ratio:1/1"><img src="host.jpg" alt=""></div>
+      <div class="txt">
+        <p class="lbl fade">Jediná podmínka</p>
+        <h2 class="d2" style="margin-top:18px">
+          <span class="rise"><span>Přiveďte</span></span>
+          <span class="rise"><span>jednoho člověka.</span></span>
+        </h2>
+        <div class="fade d-2" style="margin-top:26px">
+          <p>Kamaráda, kolegu, klienta, spoluzakladatele — kohokoli, o kom si myslíte, že by se hodil do party. Okruh se tím každým večerem rozšiřuje a vždycky tu potkáte tváře, které jste ještě neznali.</p>
+          <p>Kdo přichází jako host, zvát nikoho nemusí. Ale může, a je to vítané.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO Z MINULÉHO VEČERA -->
+<section class="vstage" id="video">
+  <div class="vsticky">
+    <div class="vgrow" id="vgrow">
+      <div class="vwrap" data-video="VIDEO_ID" role="button" tabindex="0" aria-label="Přehrát sestřih ze zářijového večera" style="position:absolute;inset:0;aspect-ratio:auto">
+        <img src="video-poster.jpg" alt="">
+        <div class="play"><span class="ring"></span><span>Přehrát sestřih</span></div>
+      </div>
+      <div class="kicker">
+        <span class="lbl">Sestřih ze zářijového večera · 2:14</span>
+        <h2>Podívejte se, jak to u nás vypadá</h2>
+      </div>
+    </div>
+    <p class="vcap" id="vcap">Scrollujte — video se rozevře</p>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section class="tone shell pad" id="galerie">
+  <div class="max">
+    <div class="gal-note fade">
+      <h2 class="d3">Minulé večery</h2>
+      <span class="lbl">Fotky i videa</span>
+    </div>
+    <div class="tabs fade" role="tablist">
+      <button class="tab on" data-tab="zari" role="tab" aria-selected="true">Září 2026 · druhý večer</button>
+      <button class="tab" data-tab="cerven" role="tab" aria-selected="false">Červen 2026 · první večer</button>
+    </div>
+
+    <div class="mosaic fade" id="tab-zari">
+      <div class="mtile m-a vid" data-video="VIDEO_ID_1" role="button" tabindex="0" aria-label="Přehrát video ze zářijového večera">
+        <img src="networking-zari-1.jpg" alt=""><span class="mcap">Sestřih · 1:40</span></div>
+      <div class="mtile m-b"><img src="networking-zari-2.jpg" alt=""><span class="mcap">Úvodní kolo</span></div>
+      <div class="mtile m-c"><img src="networking-zari-3.jpg" alt=""><span class="mcap">Plný stůl</span></div>
+      <div class="mtile m-d"><img src="networking-zari-4.jpg" alt=""><span class="mcap">Rozhovory</span></div>
+      <div class="mtile m-e vid" data-video="VIDEO_ID_2" role="button" tabindex="0" aria-label="Přehrát krátké video">
+        <img src="networking-zari-5.jpg" alt=""><span class="mcap">Reels · 0:30</span></div>
+      <div class="mtile m-f"><img src="networking-zari-6.jpg" alt=""><span class="mcap">Večeře</span></div>
+      <div class="mtile m-g"><img src="networking-zari-7.jpg" alt=""><span class="mcap">Před podnikem</span></div>
+    </div>
+
+    <div class="mosaic fade" id="tab-cerven" hidden>
+      <div class="mtile m-b"><img src="networking-cerven-1.jpg" alt=""><span class="mcap">Úvodní kolo</span></div>
+      <div class="mtile m-a"><img src="networking-cerven-2.jpg" alt=""><span class="mcap">Meat Beer</span></div>
+      <div class="mtile m-c"><img src="networking-cerven-3.jpg" alt=""><span class="mcap">Networking</span></div>
+      <div class="mtile m-d vid" data-video="VIDEO_ID_3" role="button" tabindex="0" aria-label="Přehrát video z červnového večera">
+        <img src="networking-cerven-4.jpg" alt=""><span class="mcap">Sestřih · 1:12</span></div>
+      <div class="mtile m-e"><img src="networking-cerven-5.jpg" alt=""><span class="mcap">Po večeři</span></div>
+    </div>
+
+    <!-- BUDOUCÍ TERMÍNY -->
+    <div class="gal-note fade">
+      <h2 class="d3">Nejbližší termíny</h2>
+      <span class="lbl">Dva večery do konce roku</span>
+    </div>
+    <div class="dates">
+      <article class="dcard next fade">
+        <span class="ghost">10</span>
+        <span class="badge"><i></i>Přihlášky otevřeny</span>
+        <div class="dt">14. října<em>Podzimní večer</em></div>
+        <div class="rows">
+          <div><span>Místo</span><span>Meat Beer, Washingtonova 23</span></div>
+          <div><span>Čas</span><span>18:00 — 22:00</span></div>
+          <div><span>Kapacita</span><span>35 míst</span></div>
+        </div>
+        <a href="#prihlaska" class="go">Rezervovat místo</a>
+      </article>
+
+      <article class="dcard fade d-1">
+        <span class="ghost">12</span>
+        <span class="badge muted"><i></i>Otevřeme v listopadu</span>
+        <div class="dt">9. prosince<em>Předvánoční večer</em></div>
+        <div class="rows">
+          <div><span>Místo</span><span>Upřesníme</span></div>
+          <div><span>Čas</span><span>18:00 — 23:00</span></div>
+          <div><span>Navíc</span><span>Svařák, punč, bilancování roku</span></div>
+        </div>
+        <span class="go off">Brzy</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCE -->
+<section class="dark shell pad" id="reference">
+  <div class="max">
+    <p class="lbl fade">Co říkají účastníci</p>
+    <h2 class="d2" style="margin:18px 0 clamp(34px,5vw,60px);max-width:16ch">
+      <span class="rise"><span>Proč se vracejí</span></span>
+    </h2>
+    <div class="quote fade">
+      <div class="who"><img class="qavatar" src="ref-jana.jpg" alt=""><div class="stars" role="img" aria-label="Hodnocení 5 z 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div><b>Jana Nováková</b>zakladatelka, studio Vlna<br>2× účastnice</div>
+      <blockquote>Šla jsem tam kvůli kontaktům a odešla se dvěma radami, které mi ušetřily měsíce zkoušení.</blockquote>
+    </div>
+    <div class="quote fade">
+      <div class="who"><img class="qavatar" src="ref-petr.jpg" alt=""><div class="stars" role="img" aria-label="Hodnocení 5 z 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div><b>Petr Svoboda</b>jednatel, Kovo Industry<br>Host, dnes stálý člen</div>
+      <blockquote>Konečně večer, kde po mně nikdo nechtěl vizitku. Z jednoho stolu vznikla spolupráce, která běží dodnes.</blockquote>
+    </div>
+    <div class="quote fade">
+      <div class="who"><img class="qavatar" src="ref-tereza.jpg" alt=""><div class="stars" role="img" aria-label="Hodnocení 5 z 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div><b>Tereza Hrubá</b>e-shop Bylinkárna<br>Přivedla dva hosty</div>
+      <blockquote>Pravidlo s hostem funguje. Přišla jsem jako něčí host a příště jsem už sama někoho přivedla.</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- VSTUPENKA -->
+<section class="shell pad" id="vstupenka">
+  <div class="max">
+    <div class="state-grid" style="align-items:end;margin-bottom:clamp(34px,5vw,58px)">
+      <h2 class="d2" style="max-width:12ch">
+        <span class="rise"><span>Vstupenka</span></span>
+      </h2>
+      <p class="lead fade d-1" style="margin:0">Vstupné neplatíte. Zálohou 500 Kč si držíte místo a na večeru ji dostanete zpět jako kredit na jídlo a pití.</p>
+    </div>
+
+    <div class="ticket fade">
+      <div class="t-main">
+        <div class="t-eyebrow"><span>FINE Club — Praha</span><span>Na jméno · nepřenosná</span></div>
+        <h3>Podzimní networkingový večer</h3>
+        <div class="sub">Středa 14. října 2026 · 18:00</div>
+        <p>Po zaplacení zálohy dostanete na místě kartu s předplaceným kreditem 500 Kč, který můžete projíst a propít. Když útrata přesáhne kredit, rozdíl doplatíte při odchodu kartou nebo hotově. Nevyčerpaná část propadá.</p>
+        <dl class="t-meta">
+          <div><dt>Místo</dt><dd>Meat Beer<br><span style="font-family:'Archivo';font-size:12.5px;color:rgba(242,237,229,.55)">Washingtonova 23, Praha 1</span></dd></div>
+          <div><dt>Kapacita</dt><dd>35 osob</dd></div>
+          <div><dt>Podmínka</dt><dd>Jeden host</dd></div>
+          <div><dt>Vstupné</dt><dd>0 Kč</dd></div>
+          <div><dt>Doplatek</dt><dd>Kartou i hotově</dd></div>
+          <div><dt>Storno</dt><dd>5 dní předem</dd></div>
+        </dl>
+        <div class="t-serial"><span>č. 00 / 35</span><span>FC · 2026 · X</span></div>
+      </div>
+
+      <div class="t-stub">
+        <div class="perf"></div>
+        <div class="notch top"></div>
+        <div class="notch bot"></div>
+        <div class="t-amount">500 Kč<small>Předplacený kredit</small></div>
+        <div class="qr"><img src="qr-500.jpg" alt="QR kód pro platbu 500 Kč"></div>
+        <div class="t-acct">Číslo účtu<b>1230045049/3030</b></div>
+      </div>
+    </div>
+
+    
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="shell" style="padding-bottom:clamp(84px,12vw,180px)">
+  <div class="max">
+    <h2 class="d2" style="margin-bottom:clamp(28px,4vw,52px);max-width:14ch">
+      <span class="rise"><span>Než se přihlásíte</span></span>
+    </h2>
+    <div class="faq fade">
+      <details><summary><span>Co když nemám koho přivést?</span></summary>
+        <div class="ans"><p>Napište nám to do přihlášky. Pár míst držíme pro lidi, kteří přijdou sami. Pravidlo hosta je princip, ne překážka.</p></div></details>
+      <details><summary><span>Je 500 Kč vstupné?</span></summary>
+        <div class="ans"><p>Ne. Je to záloha, kterou na místě dostanete zpět jako kredit na jídlo a pití. Vstup je zdarma, platíte jen to, co sníte a vypijete.</p></div></details>
+      <details><summary><span>Můžu místo zrušit?</span></summary>
+        <div class="ans"><p>Dejte nám vědět nejpozději 5 dní předem a zálohu vrátíme celou. Později ji můžeme přesunout na příští termín, pokud za sebe nenajdete náhradu.</p></div></details>
+      <details><summary><span>Jsem na začátku a ještě nepodnikám. Vadí to?</span></summary>
+        <div class="ans"><p>Nevadí. U stolu sedí lidé v různých fázích a právě to je na tom cenné. Jediné, co čekáme, je chuť do rozhovoru.</p></div></details>
+      <details><summary><span>Můžu tam nabízet své služby?</span></summary>
+        <div class="ans"><p>Prodejní prezentace ne. Ale říct, co děláte a co hledáte, je celý smysl večera. Obchody z toho vznikají samy.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRACE -->
+<section class="shell pad" id="prihlaska">
+  <div class="max">
+    <div class="reg">
+      <div class="side">
+        <p class="lbl fade">Přihláška</p>
+        <h2 class="d2" style="margin:18px 0 24px">
+          <span class="rise"><span>Krátký seznam,</span></span>
+          <span class="rise"><span>dlouhý večer.</span></span>
+        </h2>
+        <div class="fade d-2">
+          <p>Vyplňte formulář a uveďte i to, koho přivedete jako hosta. Ozveme se s potvrzením a platebními údaji. Váš host už svého hosta brát nemusí.</p>
+          <div class="spots">Zbývá 35 míst · 14. 10. 2026</div>
+        </div>
+      </div>
+      <div class="form-card fade d-1">
+        <iframe data-tally-src="https://tally.so/embed/J9er24?alignLeft=1&hideTitle=1&dynamicHeight=1" loading="lazy" height="2906" frameborder="0" title="FINE Club — přihláška"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="max foot-grid">
+    <div>
+      <div class="big">Martina Kačerová &amp; Ondra Pospíšil</div>
+      <div style="font-size:13.5px;color:var(--mute);margin-top:8px">FINE Club · Est. 2026 · Praha</div>
+    </div>
+    <div class="r">
+      <a href="https://www.meatbeer.cz/" target="_blank" rel="noopener">Meat Beer, Washingtonova 23, Praha 1</a><br>
+      Nečekejte na změnu, buďte její součástí
+    </div>
+  </div>
+</footer>
+
+<div class="dock" id="dock">
+  <div class="i"><b>14. října 2026</b><span>Zbývá 35 míst</span></div>
+  <a href="#prihlaska">Rezervovat</a>
+</div>
+
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+
+<script>
+/* odpočet */
+(function(){
+  var t=new Date('2026-10-14T18:00:00+02:00').getTime(),box=document.getElementById('cd');
+  var D=document.getElementById('cd-d'),H=document.getElementById('cd-h'),M=document.getElementById('cd-m'),S=document.getElementById('cd-s');
+  function p(n){return n<10?'0'+n:''+n}
+  function tick(){
+    var x=t-Date.now();
+    if(x<=0){box.outerHTML='<div class="cd-live">Právě probíhá</div>';clearInterval(iv);return}
+    var s=Math.floor(x/1000);
+    D.textContent=Math.floor(s/86400);
+    H.textContent=p(Math.floor(s%86400/3600));
+    M.textContent=p(Math.floor(s%3600/60));
+    S.textContent=p(s%60);
+  }
+  tick();var iv=setInterval(tick,1000);
+})();
+
+/* postupné dobarvení nadpisů */
+(function(){
+  var heads=document.querySelectorAll('[data-fill]');
+  heads.forEach(function(h){
+    var words=h.textContent.trim().split(/\s+/);
+    h.innerHTML=words.map(function(w){return '<span class="w">'+w+'</span>'}).join(' ');
+  });
+  function paint(){
+    heads.forEach(function(h){
+      var r=h.getBoundingClientRect(), vh=window.innerHeight;
+      var p=(vh*0.86 - r.top)/(vh*0.42 + r.height);
+      p=Math.min(1,Math.max(0,p));
+      var ws=h.querySelectorAll('.w'), n=Math.round(p*ws.length);
+      ws.forEach(function(w,i){w.classList.toggle('on', i<n)});
+    });
+  }
+  paint();
+  window.addEventListener('scroll',paint,{passive:true});
+  window.addEventListener('resize',paint);
+})();
+
+/* timeline — plnící se linka */
+(function(){
+  var sp=document.getElementById('spine'), tl=document.querySelector('.tl');if(!sp)return;
+  var rows=document.querySelectorAll('.tlrow');
+  function f(){
+    var r=tl.getBoundingClientRect(), vh=window.innerHeight;
+    var p=(vh*0.62-r.top)/(r.height||1);
+    sp.style.height=Math.min(100,Math.max(0,p*100))+'%';
+    rows.forEach(function(row){
+      var rr=row.getBoundingClientRect();
+      row.classList.toggle('in', rr.top < vh*0.62);
+    });
+  }
+  f();window.addEventListener('scroll',f,{passive:true});window.addEventListener('resize',f);
+})();
+
+/* klíčová dírka */
+(function(){
+  var sec=document.getElementById('vztahy');if(!sec)return;
+  var rev=document.getElementById('khReveal'),img=document.getElementById('khImg'),
+      copy=document.getElementById('khCopy'),hint=document.getElementById('khHint');
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){copy.classList.add('on');return}
+  function frame(){
+    var r=sec.getBoundingClientRect(), span=sec.offsetHeight-window.innerHeight;
+    var p=Math.min(1,Math.max(0,-r.top/(span||1)));
+    var e=p<.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2;      // easeInOutQuad
+    var size=14+e*e*760;                                // 14vmin → ~774vmin
+    rev.style.webkitMaskSize=size+'vmin';
+    rev.style.maskSize=size+'vmin';
+    img.style.transform='scale('+(1.45-e*.45)+')';
+    copy.classList.toggle('on', p>.62);
+    hint.style.opacity = p>.12 ? 0 : 1;
+  }
+  frame();
+  window.addEventListener('scroll',frame,{passive:true});
+  window.addEventListener('resize',frame);
+})();
+
+/* video — rozevření při scrollu */
+(function(){
+  var st=document.getElementById('video'),g=document.getElementById('vgrow'),cap=document.getElementById('vcap');
+  if(!st||!g)return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){g.style.width='92vw';g.style.height='52vh';g.classList.add('wide');return}
+  function f(){
+    var r=st.getBoundingClientRect(), span=st.offsetHeight-window.innerHeight;
+    var p=Math.min(1,Math.max(0,-r.top/(span||1)));
+    var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+    g.style.width=(26+e*66)+'vw';
+    g.style.height=(34+e*24)+'vh';
+    g.classList.toggle('wide', p>.55);
+    cap.style.opacity = p>.35?0:1;
+  }
+  f();window.addEventListener('scroll',f,{passive:true});window.addEventListener('resize',f);
+})();
+
+/* přepínání večerů */
+(function(){
+  var tabs=document.querySelectorAll('.tab');
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      tabs.forEach(function(x){x.classList.remove('on');x.setAttribute('aria-selected','false')});
+      t.classList.add('on');t.setAttribute('aria-selected','true');
+      document.querySelectorAll('.mosaic').forEach(function(m){m.hidden=true});
+      var m=document.getElementById('tab-'+t.dataset.tab);
+      m.hidden=false;m.classList.add('in');
+    });
+  });
+})();
+
+/* videa v mozaice */
+(function(){
+  document.querySelectorAll('.mtile.vid').forEach(function(t){
+    function load(){
+      t.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+t.dataset.video+'?autoplay=1&rel=0" allow="autoplay; fullscreen" allowfullscreen title="Video z večera"></iframe>';
+      t.classList.remove('vid');
+    }
+    t.addEventListener('click',load);
+    t.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();load()}});
+  });
+})();
+
+/* video — načte se až po kliknutí (rychlejší start stránky) */
+(function(){
+  document.querySelectorAll('.vwrap[data-video]').forEach(function(w){
+    function load(){
+      var id=w.dataset.video;
+      w.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" allow="autoplay; fullscreen" allowfullscreen title="Sestřih z večera"></iframe>';
+    }
+    w.addEventListener('click',load);
+    w.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();load()}});
+  });
+})();
+
+/* reveal */
+(function(){
+  var els=document.querySelectorAll('.fade,.wipe,.rise,.fig');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+  els.forEach(function(e){if(!e.classList.contains('in'))io.observe(e)});
+})();
+
+/* nav + dock */
+(function(){
+  var nav=document.getElementById('nav'),dock=document.getElementById('dock'),form=document.getElementById('prihlaska');
+  function s(){
+    var y=window.scrollY;
+    nav.classList.toggle('solid', y>window.innerHeight*.85);
+    var ft=form.getBoundingClientRect().top;
+    dock.classList.toggle('show', y>window.innerHeight*.55 && ft>window.innerHeight*.45);
+  }
+  s();window.addEventListener('scroll',s,{passive:true});window.addEventListener('resize',s);
+})();
+
+/* video */
+(function(){
+  var v=document.querySelector('.hero video');if(!v)return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){v.pause();return}
+  new IntersectionObserver(function(en){en.forEach(function(e){e.isIntersecting?v.play().catch(function(){}):v.pause()})},{threshold:.05}).observe(v);
+})();
+</script>
+</body>
+</html>

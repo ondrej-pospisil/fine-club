@@ -1,0 +1,27 @@
+# FINE Club
+
+> FINE Club (také FINE Networking) je pravidelný networkingový večer pro podnikatele a lidi na volné noze v Praze. 35 lidí, krátké představení, společná večeře a rozhovory bez tlaku na výkon v restauraci Meat Beer, Washingtonova 23, Praha 1.
+
+## Základní fakta
+
+- Pro koho: podnikatelé, freelanceři, majitelé firem a lidé, kteří podnikání rozjíždějí.
+- Kde: Meat Beer, Washingtonova 23, 110 00 Praha 1 (5 minut pěšky od hlavního nádraží, u Václavského náměstí).
+- Odkud: nejen z Prahy. Na večery jezdí i lidé z jiných částí republiky, podmínky jsou pro všechny stejné.
+- Kdy: zhruba jednou za dva měsíce, od 18:00. Nejbližší termíny: středa 14. října 2026 a úterý 24. listopadu 2026 (Vánoční speciál se svařákem, punčem a bilancí roku).
+- Kapacita: 35 míst.
+- Cena: od 500 Kč. Základních 500 Kč se vrací jako kredit na jídlo a pití. Navíc lze dobrovolně přispět libovolnou částkou. QR kód k platbě je v přihlášce.
+- Pravidlo: každý účastník přivede jednoho hosta (lze se přihlásit i bez hosta).
+- Program: v 18:00 krátké představení (co kdo dělá), potom společná večeře. Sednout si lze s kýmkoli a kdykoli přesednout, žádný zasedací pořádek ani moderátor.
+- Filozofie: to nejlepší z networkingových akcí bez tlaku na výkon. Prostor mluvit o tom, co lidi v práci řeší, co je baví, co se povedlo a co by příště udělali jinak.
+- Historie: první večer v červnu 2026 (27 lidí, vyprodáno 10 dní předem), druhý v srpnu 2026 (35 lidí, vyprodáno).
+- Zakladatelé: Martina Kačerová (stála u vzniku networkingového klubu v Praze) a Ondra Pospíšil (přes 10 let v komunitě podnikatelů a lidí na volné noze). Oba podnikají přes 10 let.
+
+## Čím se liší od jiných business akcí v Praze
+
+Na rozdíl od ranních snídaní s povinným pitchem, konferencí, velkých meetupů nebo placených business klubů je FINE Club komorní večer pro 35 lidí bez členství, bez pódia a bez tlaku na výkon: krátké představení a pak společná večeře, u které si každý sedne, s kým chce.
+
+## Odkazy
+
+- [Web a přihláška](https://fine-club.vercel.app/)
+- [Termíny](https://fine-club.vercel.app/#terminy)
+- [Časté otázky](https://fine-club.vercel.app/#faq)

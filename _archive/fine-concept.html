@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Pine Club — Kruh, kam patříte · Praha</title>
+<meta name="description" content="Uzavřený klub pouze na pozvání pro zakladatele, investory a tvůrce. Byznys, lifestyle, zdraví a mysl. Praha, Est. MMXXVI." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#16263f; --ink-soft:#41546a;
+    --paper:#f4efe4; --paper-2:#faf7f0;
+    --navy:#16263f; --navy-2:#1e3352;
+    --gold:#a5834f; --gold-lt:#c6a878;
+    --line:rgba(22,38,63,.14); --line-lt:rgba(255,255,255,.16);
+    --pad-x:clamp(22px,6vw,96px);
+    --sect-y:clamp(92px,13vh,180px);
+    --maxw:1180px;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"Jost",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.75;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ::selection{background:var(--navy);color:var(--paper);}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:1px;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad-x);}
+
+  .eyebrow{font-family:var(--sans);font-size:11.5px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin:0;}
+  .display{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:.005em;margin:0;}
+  .lede{font-family:var(--sans);font-weight:300;color:var(--ink-soft);font-size:clamp(14.5px,1.15vw,16px);line-height:1.85;}
+
+  .logo{display:inline-block;line-height:0;color:var(--navy);}
+  .logo svg{width:100%;height:auto;display:block;fill:currentColor;}
+  .star{width:16px;height:16px;flex:none;color:var(--gold);}
+  .star svg{width:100%;height:100%;display:block;fill:currentColor;}
+
+  /* NAV */
+  .nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:22px var(--pad-x);color:#fff;transition:background .5s ease,color .5s ease,padding .5s ease,box-shadow .5s ease;}
+  .nav .logo{width:104px;color:currentColor;}
+  .nav-links{display:flex;align-items:center;gap:clamp(20px,3vw,40px);}
+  .nav-links a{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:400;position:relative;padding:4px 0;color:currentColor;opacity:.9;}
+  .nav-menu-links{display:flex;align-items:center;gap:clamp(20px,3vw,40px);}
+  .nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:currentColor;transition:width .4s ease;}
+  .nav-links a:not(.nav-cta):hover::after{width:100%;}
+  .nav-cta{border:1px solid currentColor;border-radius:2px;padding:9px 18px !important;opacity:1 !important;transition:background .35s ease,color .35s ease;}
+  .nav.scrolled{background:rgba(244,239,228,.92);backdrop-filter:blur(10px);color:var(--navy);padding-top:15px;padding-bottom:15px;box-shadow:0 1px 0 var(--line);}
+  .nav.scrolled .nav-cta:hover{background:var(--navy);color:var(--paper);}
+  .nav:not(.scrolled) .nav-cta:hover{background:#fff;color:var(--navy);}
+
+  /* HERO */
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;padding:120px var(--pad-x) 90px;
+    background:linear-gradient(180deg, rgba(16,27,45,.60) 0%, rgba(16,27,45,.48) 42%, rgba(11,20,36,.92) 100%),
+      url("https://images.unsplash.com/photo-1772202950305-2e6fee0b1ab3?fm=jpg&q=70&w=2400&auto=format&fit=crop") center 32% / cover no-repeat;}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 40%, transparent 40%, rgba(11,20,36,.5) 100%);pointer-events:none;}
+  .hero-inner{position:relative;z-index:2;max-width:820px;}
+  .hero .eyebrow{color:var(--gold-lt);}
+  .hero-title{font-family:var(--serif);font-weight:500;font-size:clamp(30px,5.4vw,60px);line-height:1.12;letter-spacing:.005em;color:#f6f1e8;margin:26px auto 0;max-width:16ch;text-shadow:0 1px 30px rgba(0,0,0,.35);}
+  .hero-title em{font-style:italic;color:var(--gold-lt);}
+  .hero-sub{margin:26px auto 0;max-width:44ch;color:rgba(244,239,230,.82);font-size:clamp(14px,1.2vw,16px);font-weight:300;letter-spacing:.02em;text-shadow:0 1px 18px rgba(0,0,0,.4);}
+  .hero-thinrule{width:52px;height:1px;background:var(--gold-lt);opacity:.8;margin:34px auto 30px;}
+  .hero-cta{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:#fff;padding:15px 32px;border:1px solid rgba(255,255,255,.6);border-radius:2px;transition:background .4s ease,color .4s ease,border-color .4s ease;backdrop-filter:blur(2px);}
+  .hero-cta:hover{background:#fff;color:var(--navy);border-color:#fff;}
+  .scroll-hint{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);z-index:2;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.6);display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .scroll-hint span{width:1px;height:38px;background:linear-gradient(rgba(255,255,255,.6),transparent);animation:drop 2.4s ease-in-out infinite;}
+  @keyframes drop{0%,100%{transform:scaleY(.3);transform-origin:top;opacity:.4}50%{transform:scaleY(1);opacity:.9}}
+
+  .seq{opacity:0;transform:translateY(16px);animation:rise .95s cubic-bezier(.2,.7,.2,1) forwards;}
+  .seq.d1{animation-delay:.12s}.seq.d2{animation-delay:.3s}.seq.d3{animation-delay:.48s}.seq.d4{animation-delay:.64s}.seq.d5{animation-delay:.8s}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  /* MANIFESTO */
+  .manifesto{padding:var(--sect-y) 0;background:var(--paper);text-align:center;}
+  .manifesto .eyebrow{margin-bottom:32px;}
+  .manifesto-head{font-size:clamp(27px,4.4vw,50px);max-width:20ch;margin:0 auto;color:var(--ink);}
+  .manifesto-head em{font-style:italic;color:var(--gold);}
+  .manifesto-cols{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(28px,5vw,64px);align-items:start;margin-top:clamp(48px,7vw,80px);text-align:left;}
+  .manifesto-cols .lede{margin:0;}
+  .manifesto-cols .col-r{text-align:right;}
+  .divmark{width:26px;height:26px;color:var(--gold);margin-top:6px;}
+  .divmark svg{width:100%;height:100%;fill:currentColor;}
+
+  /* TOPICS (Okruhy) */
+  .topics{position:relative;background:var(--navy);color:#f2ece1;padding:var(--sect-y) 0;overflow:hidden;}
+  .topics::before{content:"";position:absolute;inset:0;background:radial-gradient(90% 120% at 50% -10%, rgba(90,120,150,.20), transparent 55%);pointer-events:none;}
+  .topics .wrap{position:relative;}
+  .topics-head{text-align:center;margin-bottom:clamp(48px,6vw,80px);}
+  .topics-head .eyebrow{color:var(--gold-lt);margin-bottom:22px;}
+  .topics-head .display{color:#f4eee3;font-size:clamp(28px,4vw,48px);}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(26px,3vw,46px);}
+  .topic{position:relative;padding-top:26px;}
+  .topic::before{content:"";position:absolute;top:0;left:0;width:38px;height:1px;background:var(--gold-lt);}
+  .topic .tnum{font-family:var(--serif);font-size:16px;color:var(--gold-lt);letter-spacing:.12em;margin-bottom:16px;}
+  .topic h3{font-family:var(--serif);font-weight:500;font-size:clamp(21px,2.1vw,28px);color:#f5efe5;margin:0 0 12px;line-height:1.15;}
+  .topic p{margin:0;font-size:14px;line-height:1.8;color:rgba(240,234,224,.6);font-weight:300;}
+
+  /* PILLARS */
+  .pillars{padding:var(--sect-y) 0;background:var(--paper-2);}
+  .pillars-head{text-align:center;max-width:640px;margin:0 auto clamp(56px,7vw,88px);}
+  .pillars-head .eyebrow{margin-bottom:22px;}
+  .pillars-head .display{font-size:clamp(28px,4vw,48px);}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,56px);}
+  .pillar{position:relative;padding-top:34px;}
+  .pillar::before{content:"";position:absolute;top:0;left:0;width:44px;height:1px;background:var(--gold);}
+  .pillar-icon{width:42px;height:42px;color:var(--ink);margin-bottom:22px;opacity:.9;}
+  .pillar-icon svg{width:100%;height:100%;display:block;}
+  .pillar h3{font-family:var(--serif);font-weight:500;font-size:clamp(21px,2vw,27px);margin:0 0 14px;letter-spacing:.01em;line-height:1.2;}
+  .pillar p{margin:0;color:var(--ink-soft);font-size:15px;line-height:1.85;font-weight:300;}
+
+  /* FOUNDERS */
+  .founders{padding:var(--sect-y) 0;background:var(--paper);text-align:center;}
+  .founders-head{margin-bottom:clamp(48px,6vw,72px);}
+  .founders-head .eyebrow{margin-bottom:22px;}
+  .founders-head .display{font-size:clamp(28px,4vw,48px);color:var(--ink);}
+  .founders-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(32px,5vw,64px);max-width:860px;margin:0 auto;}
+  .founder{display:flex;flex-direction:column;align-items:center;}
+  .avatar{width:106px;height:106px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(155deg,#22384f,#14233b);color:var(--gold-lt);font-family:var(--serif);font-size:32px;letter-spacing:.05em;box-shadow:inset 0 0 0 1px rgba(198,168,120,.32);margin-bottom:24px;}
+  .founder h3{font-family:var(--serif);font-weight:500;font-size:23px;margin:0 0 8px;color:var(--ink);letter-spacing:.01em;}
+  .founder .role{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);}
+
+  /* GALLERY (placeholdery byznys akcí) */
+  .gallery{padding:var(--sect-y) 0;background:var(--paper-2);}
+  .gallery-head{text-align:center;max-width:600px;margin:0 auto clamp(48px,6vw,72px);}
+  .gallery-head .eyebrow{margin-bottom:22px;}
+  .gallery-head .display{font-size:clamp(28px,4vw,48px);}
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:14px;}
+  .ph{position:relative;overflow:hidden;border-radius:2px;background:linear-gradient(150deg,#223a54,#14233b);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);display:flex;align-items:flex-end;padding:22px;transition:transform .5s ease,box-shadow .5s ease;}
+  .ph::before{content:"";position:absolute;inset:0;background:radial-gradient(80% 90% at 78% 12%, rgba(120,150,180,.16), transparent 60%);pointer-events:none;}
+  .ph:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1px rgba(198,168,120,.45);}
+  .gallery-grid .ph:nth-child(2){background:linear-gradient(150deg,#1f3350,#131f37);}
+  .gallery-grid .ph:nth-child(3){background:linear-gradient(160deg,#26405a,#16273f);}
+  .gallery-grid .ph:nth-child(4){background:linear-gradient(145deg,#1c3049,#101d33);}
+  .gallery-grid .ph:nth-child(5){background:linear-gradient(155deg,#24405c,#152439);}
+  .gallery-grid .ph:nth-child(6){background:linear-gradient(150deg,#203752,#12203a);}
+  .ph .num{position:absolute;top:16px;left:20px;font-family:var(--serif);font-size:34px;color:rgba(255,255,255,.13);line-height:1;}
+  .ph .ph-star{position:absolute;top:19px;right:19px;width:14px;height:14px;color:rgba(198,168,120,.55);}
+  .ph .ph-star svg{width:100%;height:100%;fill:currentColor;}
+  .ph-meta{position:relative;z-index:2;}
+  .ph-meta .ph-k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:9px;}
+  .ph-meta .ph-t{font-family:var(--serif);font-size:clamp(19px,2.1vw,27px);color:#f4eee3;line-height:1.15;}
+  .g1{grid-column:span 2;grid-row:span 2;}
+  .g2{grid-column:span 2;}
+  .g5{grid-column:span 2;}
+  .g6{grid-column:span 2;}
+  .gallery-note{text-align:center;margin-top:28px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);opacity:.65;}
+
+  /* QUOTE BAND */
+  .band{position:relative;background:var(--navy);color:#f2ece1;text-align:center;padding:clamp(88px,12vw,150px) 0;overflow:hidden;}
+  .band::before{content:"";position:absolute;inset:0;background:radial-gradient(90% 120% at 50% 0%, rgba(90,120,150,.22), transparent 60%);pointer-events:none;}
+  .band .wrap{position:relative;}
+  .band .star{margin:0 auto 26px;color:var(--gold-lt);}
+  .band-quote{font-family:var(--serif);font-weight:400;font-size:clamp(26px,4.2vw,46px);line-height:1.25;max-width:20ch;margin:0 auto;color:#f4eee3;}
+  .band-quote em{font-style:italic;color:var(--gold-lt);}
+  .band-attr{margin-top:30px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:rgba(244,238,227,.6);font-weight:400;}
+
+  /* CONTACT */
+  .contact{padding:var(--sect-y) 0;background:var(--paper);text-align:center;}
+  .contact .eyebrow{margin-bottom:24px;}
+  .contact-title{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4.4vw,52px);line-height:1.1;max-width:18ch;margin:0 auto 22px;color:var(--ink);}
+  .contact-text{max-width:46ch;margin:0 auto 44px;color:var(--ink-soft);font-size:clamp(14.5px,1.15vw,16px);line-height:1.85;font-weight:300;}
+  .contact-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:11px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;padding:17px 34px;border-radius:2px;transition:background .35s ease,color .35s ease,border-color .35s ease,transform .35s ease;}
+  .btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.4;}
+  .btn-primary{background:var(--navy);color:var(--paper);border:1px solid var(--navy);}
+  .btn-primary:hover{background:transparent;color:var(--navy);}
+  .btn-ghost{background:transparent;color:var(--navy);border:1px solid rgba(22,38,63,.35);}
+  .btn-ghost:hover{border-color:var(--navy);transform:translateY(-1px);}
+  .contact-meta{margin-top:44px;display:flex;gap:40px;justify-content:center;flex-wrap:wrap;}
+  .contact-meta .k{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
+  .contact-meta .v{font-family:var(--serif);font-size:19px;color:var(--ink);}
+
+  /* FOOTER */
+  .footer{background:var(--navy);color:rgba(244,238,227,.72);padding:clamp(64px,8vw,96px) 0 40px;}
+  .footer-top{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap;align-items:flex-start;}
+  .footer .logo{width:150px;color:#fff;margin-bottom:18px;}
+  .footer-blurb{max-width:30ch;font-size:13.5px;line-height:1.85;color:rgba(244,238,227,.55);font-weight:300;}
+  .footer-cols{display:flex;gap:clamp(40px,6vw,80px);flex-wrap:wrap;}
+  .fcol h4{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-lt);margin:0 0 18px;font-weight:500;}
+  .fcol a{display:block;font-size:13.5px;margin-bottom:11px;color:rgba(244,238,227,.72);transition:color .3s ease;}
+  .fcol a:hover{color:#fff;}
+  .footer-rule{display:flex;align-items:center;gap:20px;margin:clamp(48px,6vw,72px) 0 32px;}
+  .footer-rule .line{flex:1;height:1px;background:var(--line-lt);}
+  .footer-rule .star{color:var(--gold-lt);}
+  .footer-base{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,238,227,.45);}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.18s}.reveal.d3{transition-delay:.28s}
+
+  @media(max-width:900px){
+    .nav-menu-links{display:none;}
+    .grid3{grid-template-columns:1fr;gap:44px;}
+    .grid4{grid-template-columns:1fr 1fr;gap:36px;}
+    .manifesto-cols{grid-template-columns:1fr;text-align:left;gap:24px;}
+    .manifesto-cols .col-r{text-align:left;}
+    .divmark{margin:6px 0;}
+  }
+  @media(max-width:760px){
+    .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:150px;}
+    .g1{grid-column:span 2;grid-row:span 2;}
+    .g2,.g5,.g6{grid-column:span 2;}
+    .g3,.g4{grid-column:span 1;}
+    .founders-grid{grid-template-columns:1fr;gap:44px;}
+  }
+  @media(max-width:560px){
+    .footer-top{flex-direction:column;}
+    .grid4{grid-template-columns:1fr;}
+    .contact-meta{gap:26px;}
+    .btn{flex:1;justify-content:center;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important;scroll-behavior:auto;}
+    .seq,.reveal{opacity:1 !important;transform:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wordmark" viewBox="0 0 197 78">
+    <path d="M159.33 48V47.808H165.09V0.192032H159.33V3.05176e-05H195.81V13.12H195.65C195.33 10.8374 194.594 8.7147 193.442 6.75203C192.311 4.78937 190.807 3.2107 188.93 2.01603C187.053 0.800032 184.866 0.192032 182.37 0.192032H175.01V47.808H181.698C184.642 47.808 187.138 47.1894 189.186 45.952C191.234 44.7147 192.845 43.0294 194.018 40.896C195.213 38.7414 195.97 36.3094 196.29 33.6H196.482V48H159.33ZM185.73 31.168C185.41 29.7387 184.813 28.4267 183.938 27.232C183.063 26.0374 182.029 25.0774 180.834 24.352C179.661 23.6267 178.466 23.264 177.25 23.264H172.354V23.072H177.25C178.466 23.072 179.661 22.7414 180.834 22.08C182.029 21.4187 183.063 20.512 183.938 19.36C184.813 18.208 185.41 16.9174 185.73 15.488H185.922V31.168H185.73Z"/>
+    <path d="M102.592 3.05176e-05V47.808H110.016V48H96.0325V47.808H102.4V0.192032H96.0325V3.05176e-05H102.592ZM141.856 3.05176e-05V0.192032H135.136V48.64H134.912L102.464 3.05176e-05H114.304L134.944 31.712V0.192032H127.584V3.05176e-05H141.856Z"/>
+    <path d="M53.86 48V47.808H60.9V0.192032H53.86V3.05176e-05H78.5V0.192032H70.82V47.808H78.5V48H53.86Z"/>
+    <path d="M26.368 32.128C26.048 30.6987 25.4827 29.3867 24.672 28.192C23.8827 26.9974 22.8587 26.0374 21.6 25.312C20.3627 24.5867 18.9227 24.224 17.28 24.224H13.12V24.032H17.28C18.9227 24.032 20.3627 23.7014 21.6 23.04C22.8587 22.3787 23.8827 21.472 24.672 20.32C25.4827 19.168 26.048 17.8774 26.368 16.448H26.56V32.128H26.368ZM35.552 3.05176e-05V13.12H35.36C35.04 10.8374 34.3573 8.7147 33.312 6.75203C32.288 4.78937 30.912 3.2107 29.184 2.01603C27.4773 0.800032 25.4187 0.192032 23.008 0.192032H15.68V47.808H22.08V48H0V47.808H5.76V0.192032H0V3.05176e-05H35.552Z"/>
+    <path d="M116.666 77.4201V64.8201H122.57C124.082 64.8201 125.234 65.1201 126.026 65.7201C126.818 66.3081 127.214 67.1001 127.214 68.0961C127.214 68.7681 127.058 69.3441 126.746 69.8241C126.434 70.2921 126.014 70.6581 125.486 70.9221C124.97 71.1741 124.406 71.3001 123.794 71.3001L124.118 70.6521C124.826 70.6521 125.462 70.7841 126.026 71.0481C126.59 71.3001 127.034 71.6721 127.358 72.1641C127.694 72.6561 127.862 73.2681 127.862 74.0001C127.862 75.0801 127.448 75.9201 126.62 76.5201C125.792 77.1201 124.562 77.4201 122.93 77.4201H116.666ZM119.006 75.5841H122.786C123.662 75.5841 124.334 75.4401 124.802 75.1521C125.27 74.8641 125.504 74.4021 125.504 73.7661C125.504 73.1421 125.27 72.6861 124.802 72.3981C124.334 72.0981 123.662 71.9481 122.786 71.9481H118.826V70.1301H122.318C123.134 70.1301 123.758 69.9861 124.19 69.6981C124.634 69.4101 124.856 68.9781 124.856 68.4021C124.856 67.8141 124.634 67.3761 124.19 67.0881C123.758 66.8001 123.134 66.6561 122.318 66.6561H119.006V75.5841Z"/>
+    <path d="M105.001 77.6001C103.273 77.6001 101.917 77.1141 100.933 76.1421C99.9611 75.1701 99.4751 73.7661 99.4751 71.9301V64.8201H101.815V71.8401C101.815 73.1361 102.091 74.0781 102.643 74.6661C103.207 75.2541 103.999 75.5481 105.019 75.5481C106.039 75.5481 106.825 75.2541 107.377 74.6661C107.929 74.0781 108.205 73.1361 108.205 71.8401V64.8201H110.509V71.9301C110.509 73.7661 110.017 75.1701 109.033 76.1421C108.061 77.1141 106.717 77.6001 105.001 77.6001Z"/>
+    <path d="M86.1034 77.4201V64.8201H88.4434V75.4401H95.0314V77.4201H86.1034Z"/>
+    <path d="M76.1356 77.6C75.1756 77.6 74.2816 77.444 73.4536 77.132C72.6376 76.808 71.9236 76.358 71.3116 75.782C70.7116 75.194 70.2436 74.504 69.9076 73.712C69.5716 72.92 69.4036 72.056 69.4036 71.12C69.4036 70.184 69.5716 69.32 69.9076 68.528C70.2436 67.736 70.7176 67.052 71.3296 66.476C71.9416 65.888 72.6556 65.438 73.4716 65.126C74.2876 64.802 75.1816 64.64 76.1536 64.64C77.1856 64.64 78.1276 64.82 78.9796 65.18C79.8316 65.528 80.5516 66.05 81.1396 66.746L79.6276 68.168C79.1716 67.676 78.6616 67.31 78.0976 67.07C77.5336 66.818 76.9216 66.692 76.2616 66.692C75.6016 66.692 74.9956 66.8 74.4436 67.016C73.9036 67.232 73.4296 67.538 73.0216 67.934C72.6256 68.33 72.3136 68.798 72.0856 69.338C71.8696 69.878 71.7616 70.472 71.7616 71.12C71.7616 71.768 71.8696 72.362 72.0856 72.902C72.3136 73.442 72.6256 73.91 73.0216 74.306C73.4296 74.702 73.9036 75.008 74.4436 75.224C74.9956 75.44 75.6016 75.548 76.2616 75.548C76.9216 75.548 77.5336 75.428 78.0976 75.188C78.6616 74.936 79.1716 74.558 79.6276 74.054L81.1396 75.494C80.5516 76.178 79.8316 76.7 78.9796 77.06C78.1276 77.42 77.1796 77.6 76.1356 77.6Z"/>
+  </symbol>
+  <symbol id="compass" viewBox="0 0 40 40">
+    <path d="M20 1 L22.6 17.4 L39 20 L22.6 22.6 L20 39 L17.4 22.6 L1 20 L17.4 17.4 Z"/>
+  </symbol>
+</svg>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a href="#top" class="logo" aria-label="The Pine Club — domů"><svg viewBox="0 0 197 78"><use href="#wordmark"/></svg></a>
+  <nav class="nav-links">
+    <span class="nav-menu-links">
+      <a href="#klub">Klub</a>
+      <a href="#okruhy">Okruhy</a>
+      <a href="#zakladatele">Zakladatelé</a>
+    </span>
+    <a href="#kontakt" class="nav-cta">Chci pozvánku</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <p class="eyebrow seq d1">Est. MMXXVI · Praha</p>
+    <h1 class="hero-title seq d2">Někteří lidé nehledají síť.<br />Hledají <em>kruh, kam patří.</em></h1>
+    <p class="hero-sub seq d3">Uzavřený klub pro ty, kdo tvoří svět potichu. Praha. Pouze na pozvání.</p>
+    <div class="hero-thinrule seq d4"></div>
+    <a href="#kontakt" class="hero-cta seq d5">Chci se představit</a>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"><span></span>Dolů</div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto" id="klub">
+  <div class="wrap">
+    <p class="eyebrow reveal">Pine Club · Praha</p>
+    <h2 class="display manifesto-head reveal d1">Uzavřený kruh pro těch pár, kdo mění svět <em>potichu.</em></h2>
+    <div class="manifesto-cols">
+      <p class="lede reveal">
+        Členství je záměrně malé. Každý stůl skládáme tak, aby mělo každé seznámení váhu
+        a žádný večer nebyl ztracený ve špatné společnosti. Klub neměříme počtem — ale
+        kalibrem lidí, kteří už jsou uvnitř.
+      </p>
+      <div class="divmark reveal d1" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="#compass"/></svg></div>
+      <p class="lede col-r reveal d2">
+        Od soukromých večeří po neveřejné brífinky — klub existuje proto, aby dal ty správné
+        lidi do jedné místnosti. A aby ta místnost zůstala diskrétní. Co padne mezi členy,
+        mezi členy zůstává.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS / OKRUHY -->
+<section class="topics" id="okruhy">
+  <div class="wrap">
+    <div class="topics-head">
+      <p class="eyebrow reveal">Okruhy, které řešíme</p>
+      <h2 class="display reveal d1">Čtyři roviny jednoho života</h2>
+    </div>
+    <div class="grid4">
+      <article class="topic reveal">
+        <div class="tnum">01</div>
+        <h3>Byznys</h3>
+        <p>Škálování, kapitál, exity a rozhodnutí, o kterých se jinde nahlas nemluví.</p>
+      </article>
+      <article class="topic reveal d1">
+        <div class="tnum">02</div>
+        <h3>Lifestyle</h3>
+        <p>Čas, vkus a prostředí, které dělají úspěch snesitelným — cesty, stůl, lidé kolem.</p>
+      </article>
+      <article class="topic reveal d2">
+        <div class="tnum">03</div>
+        <h3>Zdraví</h3>
+        <p>Kondice, dlouhověkost a energie, bez které se nejlepší plán nikam nedostane.</p>
+      </article>
+      <article class="topic reveal d3">
+        <div class="tnum">04</div>
+        <h3>Mysl</h3>
+        <p>Fokus, odolnost a klid. Vnitřní strana výkonu, na kterou většina zapomíná.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars" id="clenstvi">
+  <div class="wrap">
+    <div class="pillars-head">
+      <p class="eyebrow reveal">Členství</p>
+      <h2 class="display reveal d1">Co znamená mít místo u stolu</h2>
+    </div>
+    <div class="grid3">
+      <article class="pillar reveal">
+        <div class="pillar-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1">
+            <circle cx="24" cy="24" r="20"/>
+            <path d="M24 8 L28 24 L24 40 L20 24 Z" fill="currentColor" stroke="none"/>
+            <path d="M8 24 L24 20 L40 24 L24 28 Z" opacity=".45"/>
+          </svg>
+        </div>
+        <h3>Kruh</h3>
+        <p>Prověřená společnost zakladatelů, investorů a tvůrců. Malá záměrně — aby každé jméno
+           u stolu něco znamenalo dřív, než si podáte ruku.</p>
+      </article>
+
+      <article class="pillar reveal d1">
+        <div class="pillar-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1">
+            <path d="M2 20 C 8 12, 14 12, 20 20 S 34 28, 40 20 S 46 12, 46 20"/>
+            <path d="M2 30 C 8 22, 14 22, 20 30 S 34 38, 40 30 S 46 22, 46 30" opacity=".5"/>
+          </svg>
+        </div>
+        <h3>Kalendář</h3>
+        <p>Soukromé večeře, výjezdy a neveřejné brífinky napříč sezónou. Vždy komorní,
+           nikdy přeplněné — večery, které nenajdete v žádném veřejném programu.</p>
+      </article>
+
+      <article class="pillar reveal d2">
+        <div class="pillar-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1">
+            <circle cx="24" cy="24" r="20"/>
+            <circle cx="24" cy="24" r="9"/>
+            <path d="M24 4 V15 M24 33 V44 M4 24 H15 M33 24 H44"/>
+          </svg>
+        </div>
+        <h3>Concierge</h3>
+        <p>Jeden kontakt pro seznámení, rezervace i uvedení. Zařízeno diskrétně a podle vás —
+           ať jde o vřelé představení, nebo o stůl v pátek večer.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS / ZAKLADATELÉ -->
+<section class="founders" id="zakladatele">
+  <div class="wrap">
+    <div class="founders-head">
+      <p class="eyebrow reveal">Zakladatelé</p>
+      <h2 class="display reveal d1">Lidé za klubem</h2>
+    </div>
+    <div class="founders-grid">
+      <div class="founder reveal">
+        <div class="avatar" aria-hidden="true">MK</div>
+        <h3>Martina Kačerová</h3>
+        <div class="role">Spoluzakladatelka</div>
+      </div>
+      <div class="founder reveal d1">
+        <div class="avatar" aria-hidden="true">OP</div>
+        <h3>Ondřej Pospíšil</h3>
+        <div class="role">Spoluzakladatel</div>
+      </div>
+      <div class="founder reveal d2">
+        <div class="avatar" aria-hidden="true">KV</div>
+        <h3>Květuše Vašířová</h3>
+        <div class="role">Spoluzakladatelka</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY (placeholdery byznys akcí) -->
+<section class="gallery" id="galerie">
+  <div class="wrap">
+    <div class="gallery-head">
+      <p class="eyebrow reveal">Galerie</p>
+      <h2 class="display reveal d1">Klubové večery</h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <figure class="ph g1">
+        <span class="num" aria-hidden="true">01</span>
+        <span class="ph-star" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="#compass"/></svg></span>
+        <div class="ph-meta"><div class="ph-k">Praha · 2026</div><div class="ph-t">Networkingová večeře</div></div>
+      </figure>
+      <figure class="ph g2">
+        <span class="num" aria-hidden="true">02</span>
+        <span class="ph-star" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="#compass"/></svg></span>
+        <div class="ph-meta"><div class="ph-k">Praha · 2026</div><div class="ph-t">Investorská snídaně</div></div>
+      </figure>
+      <figure class="ph g3">
+        <span class="num" aria-hidden="true">03</span>
+        <span class="ph-star" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="#compass"/></svg></span>
+        <div class="ph-meta"><div class="ph-k">Praha · 2026</div><div class="ph-t">Panelová diskuse</div></div>
+      </figure>
+      <figure class="ph g4">
+        <span class="num" aria-hidden="true">04</span>
+        <span class="ph-star" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="#compass"/></svg></span>
+        <div class="ph-meta"><div class="ph-k">Praha · 2026</div><div class="ph-t">Mastermind</div></div>
+      </figure>
+      <figure class="ph g5">
+        <span class="num" aria-hidden="true">05</span>
+        <span class="ph-star" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="#compass"/></svg></span>
+        <div class="ph-meta"><div class="ph-k">Praha · 2026</div><div class="ph-t">Fireside chat</div></div>
+      </figure>
+      <figure class="ph g6">
+        <span class="num" aria-hidden="true">06</span>
+        <span class="ph-star" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="#compass"/></svg></span>
+        <div class="ph-meta"><div class="ph-k">Praha · 2026</div><div class="ph-t">Klubový retreat</div></div>
+      </figure>
+    </div>
+    <p class="gallery-note">Fotografie z klubových akcí — připravujeme</p>
+  </div>
+</section>
+
+<!-- QUOTE BAND -->
+<section class="band">
+  <div class="wrap">
+    <div class="star reveal" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="#compass"/></svg></div>
+    <p class="band-quote reveal d1">Nejlepší rozhovory se nedají naplánovat. Dají se jen <em>umožnit.</em></p>
+    <p class="band-attr reveal d2">Zásada domu</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="kontakt">
+  <div class="wrap">
+    <p class="eyebrow reveal">Pozvánka</p>
+    <h2 class="contact-title reveal d1">Členství je pouze na pozvání. Ozvěte se.</h2>
+    <p class="contact-text reveal d2">
+      Každou sezónu otevíráme jen několik míst. Zavolejte nám, nebo napište — na každou
+      zprávu odpovídáme osobně a v naprosté diskrétnosti.
+    </p>
+    <div class="contact-actions reveal d2">
+      <a class="btn btn-primary" href="mailto:office@pineclub.cz?subject=Žádost%20o%20pozvánku%20do%20Pine%20Club">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5 L12 13 L20.5 6.5"/></svg>
+        Napsat e-mail
+      </a>
+      <a class="btn btn-ghost" href="tel:+420777123456">
+        <svg viewBox="0 0 24 24"><path d="M6 3.5c1 0 1.7.2 2 1l1 2.4c.3.7.1 1.3-.4 1.8l-1 1a12 12 0 0 0 5.2 5.2l1-1c.5-.5 1.1-.7 1.8-.4l2.4 1c.8.3 1 1 1 2v2c0 1.1-.9 2-2 2A16 16 0 0 1 4 6.5c0-1.1.9-2 2-2Z"/></svg>
+        Zavolat
+      </a>
+    </div>
+    <div class="contact-meta reveal d2">
+      <div><div class="k">Korespondence</div><div class="v">office@pineclub.cz</div></div>
+      <div><div class="k">Sídlo</div><div class="v">Praha · Česko</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo" aria-label="The Pine Club"><svg viewBox="0 0 197 78"><use href="#wordmark"/></svg></div>
+        <p class="footer-blurb">Uzavřený klub pouze na pozvání pro ty, kdo dávají přednost společnosti sobě rovných. Praha, Est. MMXXVI.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="fcol">
+          <h4>Klub</h4>
+          <a href="#klub">O klubu</a>
+          <a href="#okruhy">Okruhy</a>
+          <a href="#clenstvi">Členství</a>
+          <a href="#zakladatele">Zakladatelé</a>
+        </div>
+        <div class="fcol">
+          <h4>Kontakt</h4>
+          <a href="mailto:office@pineclub.cz">E-mail</a>
+          <a href="tel:+420777123456">Telefon</a>
+          <a href="#">Instagram</a>
+        </div>
+        <div class="fcol">
+          <h4>Právní</h4>
+          <a href="#">Soukromí</a>
+          <a href="#">Pravidla klubu</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-rule"><span class="line"></span><span class="star" aria-hidden="true"><svg viewBox="0 0 40 40" style="width:14px;height:14px"><use href="#compass"/></svg></span><span class="line"></span></div>
+    <div class="footer-base">
+      <span>© 2026 The Pine Club · Praha</span>
+      <span>Pouze na pozvání</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.14, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
