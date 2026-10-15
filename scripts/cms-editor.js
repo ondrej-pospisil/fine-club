@@ -34,8 +34,10 @@
     .fade, .rise > span, .wipe, .fig img { opacity: 1 !important; transform: none !important; clip-path: none !important; }
     .ticket__stamp { pointer-events: auto !important; }
     .dock { display: none !important; }
-    section[hidden] { display: block !important; position: relative; opacity: .45; outline: 2px dashed rgba(192, 83, 58, .7); outline-offset: -2px; }
-    section[hidden]::before { content: "Skrytá sekce — na webu se nezobrazuje"; position: absolute; top: 12px; left: 50%; z-index: 5; transform: translateX(-50%); padding: 6px 12px; border-radius: 6px; background: #C0533A; color: #fff; font: 500 12px 'Archivo', sans-serif; letter-spacing: 0; text-transform: none; }
+    section[hidden], .date-card[hidden] { position: relative; opacity: .45; outline: 2px dashed rgba(192, 83, 58, .7); outline-offset: -2px; }
+    section[hidden] { display: block !important; }
+    .date-card[hidden] { display: flex !important; }
+    section[hidden]::before, .date-card[hidden]::before { content: "Skryté — na webu se nezobrazuje"; position: absolute; top: 12px; left: 50%; z-index: 5; transform: translateX(-50%); padding: 6px 12px; border-radius: 6px; background: #C0533A; color: #fff; font: 500 12px 'Archivo', sans-serif; letter-spacing: 0; text-transform: none; }
     body { padding-bottom: var(--cms-bar-h, 150px); }
     [data-cms] { outline: 1px dashed transparent; outline-offset: 4px; cursor: text; transition: outline-color .2s, background-color .2s; }
     [data-cms]:hover { outline-color: rgba(160, 127, 82, .75); }
