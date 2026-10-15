@@ -900,7 +900,6 @@ p:last-child { margin-bottom: 0; }
 
 /* Termíny ------------------------------------------------------------- */
 .dates { display: grid; grid-template-columns: 1.4fr .9fr; gap: clamp(16px, 2.4vw, 28px); align-items: start; }
-html[data-state="after"] .dates > .date-card:nth-child(2) { order: -1; }
 .date-card {
   position: relative;
   display: flex;
@@ -955,12 +954,12 @@ html[data-state="after"] .dates > .date-card:nth-child(2) { order: -1; }
 .date-card__order { display: flex; align-items: center; align-self: stretch; gap: 12px; margin-bottom: 28px; }
 .date-card__num { font-family: var(--serif); font-weight: 300; font-size: 1.5rem; line-height: 1; color: transparent; -webkit-text-stroke: 1px var(--brass-lt); }
 .date-card__order .lbl { color: var(--brass-lt); }
+html[data-state="after"] .date-card__in { display: none; }
 .date-card__in { margin-left: auto; font-family: var(--serif); font-style: italic; font-weight: 300; font-size: var(--fs-h4); color: var(--cream); white-space: nowrap; }
 .date-card--next .date-card__title { font-size: clamp(2.75rem, 2rem + 3vw, 4.75rem); }
 
 /* Druhý termín je upozaděný (po akci se pořadí prohodí) */
-html:not([data-state="after"]) .dates > .date-card:nth-child(2),
-html[data-state="after"] .dates > .date-card:nth-child(1) {
+.dates > .date-card:nth-child(2) {
   margin-top: clamp(24px, 4vw, 56px);
   background: transparent;
   color: var(--body);
@@ -968,24 +967,15 @@ html[data-state="after"] .dates > .date-card:nth-child(1) {
   border: 1px solid var(--hair);
   box-shadow: none;
 }
-html:not([data-state="after"]) .dates > .date-card:nth-child(2) :is(.date-card__title, .facts dd),
-html[data-state="after"] .dates > .date-card:nth-child(1) :is(.date-card__title, .facts dd) { color: var(--ink); }
-html:not([data-state="after"]) .dates > .date-card:nth-child(2) :is(.facts dt, .date-card__in),
-html[data-state="after"] .dates > .date-card:nth-child(1) :is(.facts dt, .date-card__in) { color: var(--mute); }
-html:not([data-state="after"]) .dates > .date-card:nth-child(2) :is(.date-card__order .lbl, .date-card__title em),
-html[data-state="after"] .dates > .date-card:nth-child(1) :is(.date-card__order .lbl, .date-card__title em) { color: var(--brass); }
-html:not([data-state="after"]) .dates > .date-card:nth-child(2) .date-card__num,
-html[data-state="after"] .dates > .date-card:nth-child(1) .date-card__num { -webkit-text-stroke-color: var(--brass); }
-html:not([data-state="after"]) .dates > .date-card:nth-child(2) .facts,
-html[data-state="after"] .dates > .date-card:nth-child(1) .facts { border-color: var(--hair); }
-html:not([data-state="after"]) .dates > .date-card:nth-child(2) .date-card__title,
-html[data-state="after"] .dates > .date-card:nth-child(1) .date-card__title { font-size: clamp(2rem, 1.6rem + 1.6vw, 3rem); }
-html:not([data-state="after"]) .dates > .date-card:nth-child(2) .badge--muted,
-html[data-state="after"] .dates > .date-card:nth-child(1) .badge--muted { border-color: var(--hair); color: var(--mute); }
-html:not([data-state="after"]) .dates > .date-card:nth-child(2) .btn--ghost,
-html[data-state="after"] .dates > .date-card:nth-child(1) .btn--ghost { --btn-fg: var(--ink); --btn-bd: var(--hair); }
-html:not([data-state="after"]) .dates > .date-card:nth-child(2) .date-card__deco,
-html[data-state="after"] .dates > .date-card:nth-child(1) .date-card__deco { color: var(--brass); }
+.dates > .date-card:nth-child(2) :is(.date-card__title, .facts dd) { color: var(--ink); }
+.dates > .date-card:nth-child(2) :is(.facts dt, .date-card__in) { color: var(--mute); }
+.dates > .date-card:nth-child(2) :is(.date-card__order .lbl, .date-card__title em) { color: var(--brass); }
+.dates > .date-card:nth-child(2) .date-card__num { -webkit-text-stroke-color: var(--brass); }
+.dates > .date-card:nth-child(2) .facts { border-color: var(--hair); }
+.dates > .date-card:nth-child(2) .date-card__title { font-size: clamp(2rem, 1.6rem + 1.6vw, 3rem); }
+.dates > .date-card:nth-child(2) .badge--muted { border-color: var(--hair); color: var(--mute); }
+.dates > .date-card:nth-child(2) .btn--ghost { --btn-fg: var(--ink); --btn-bd: var(--hair); }
+.dates > .date-card:nth-child(2) .date-card__deco { color: var(--brass); }
 .date-card__title em { display: block; margin-top: 8px; font-size: var(--fs-h4); letter-spacing: 0; color: var(--brass-lt); }
 .facts { position: relative; align-self: stretch; margin: 28px 0 0; padding-top: 18px; border-top: 1px solid rgba(199, 169, 123, .28); }
 .facts div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 8px 0; }
