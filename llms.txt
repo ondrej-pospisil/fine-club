@@ -22,6 +22,6 @@ Na rozdíl od ranních snídaní s povinným pitchem, konferencí, velkých meet
 
 ## Odkazy
 
-- [Web a přihláška](https://fine-club.vercel.app/)
-- [Termíny](https://fine-club.vercel.app/#terminy)
-- [Časté otázky](https://fine-club.vercel.app/#faq)
+- [Web a přihláška](https://fineclub.cz/)
+- [Termíny](https://fineclub.cz/#terminy)
+- [Časté otázky](https://fineclub.cz/#faq)

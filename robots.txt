@@ -5,4 +5,4 @@ Disallow: /_source/
 Disallow: /scripts/
 Disallow: /.cms/
 
-Sitemap: https://fine-club.vercel.app/sitemap.xml
+Sitemap: https://fineclub.cz/sitemap.xml
