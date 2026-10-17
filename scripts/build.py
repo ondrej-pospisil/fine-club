@@ -12,6 +12,7 @@ Zároveň synchronizuje FAQ ve strukturovaných datech (JSON-LD) s otázkami na 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import json
 import os
@@ -72,6 +73,17 @@ def plain(fragment: str) -> str:
     return html.unescape(re.sub(r'<[^>]+>', '', fragment)).strip()
 
 
+ASSET_RE = re.compile(r'(assets/(?:css/main\.css|js/main\.js))(?:\?v=[0-9a-f]+)?')
+
+
+def add_asset_versions(page: str) -> str:
+    """Přidá ke stylům a skriptům číslo verze podle obsahu, ať se po nasazení nikdy nenačte starý soubor z cache."""
+    def version(match: re.Match) -> str:
+        digest = hashlib.sha1((ROOT / match.group(1)).read_bytes()).hexdigest()[:10]
+        return f'{match.group(1)}?v={digest}'
+    return ASSET_RE.sub(version, page)
+
+
 def sync_faq_schema(page: str) -> str:
     items = FAQ_ITEM_RE.findall(page)
     match = FAQ_SCHEMA_RE.search(page)
@@ -100,7 +112,7 @@ def apply_state(page: str, state: dict, variant: bool) -> str:
 
 
 def build(live: str | None = None) -> list[str]:
-    source = sync_faq_schema(SOURCE.read_text(encoding='utf-8'))
+    source = add_asset_versions(sync_faq_schema(SOURCE.read_text(encoding='utf-8')))
     if live:
         source = apply_state(source, STATES[live], variant=False)
     write_atomic(SOURCE, source)
@@ -109,6 +121,11 @@ def build(live: str | None = None) -> list[str]:
     for state in STATES.values():
         write_atomic(OUT_DIR / state['file'], apply_state(source, state, variant=True))
         written.append(f'stranky/{state["file"]}')
+    club = OUT_DIR / 'klub.html'
+    if club.exists():
+        club_html = club.read_text(encoding='utf-8')
+        if add_asset_versions(club_html) != club_html:
+            write_atomic(club, add_asset_versions(club_html))
     return written
 
 
