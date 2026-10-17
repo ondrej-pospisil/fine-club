@@ -805,6 +805,8 @@ p:last-child { margin-bottom: 0; }
 }
 .event__feature > .fig { position: relative; height: auto; min-height: 0; }
 .event__feature > .fig img { position: absolute; inset: 0; }
+.event__feature--solo { grid-template-columns: 1fr; }
+.event__feature--solo > .fig { aspect-ratio: 16 / 10; }
 .event__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
