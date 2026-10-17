@@ -97,6 +97,21 @@
   /* ----------------------------------------------------------------------
      Odpočet
      ---------------------------------------------------------------------- */
+  /* Datum příštího setkání (závěrové tlačítko) se bere z nejbližší karty v Termínech */
+  const nextDateEls = $$('[data-next-date]');
+  if (nextDateEls.length && !cmsEdit) {
+    const upcoming = $$('[data-days-to]')
+      .map((el) => new Date(el.dataset.daysTo).getTime())
+      .filter((t) => Number.isFinite(t) && t + 5 * 3600 * 1000 > Date.now())
+      .sort((x, y) => x - y)[0];
+    if (upcoming) {
+      const text = new Intl.DateTimeFormat('cs-CZ', {
+        weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Prague',
+      }).format(upcoming);
+      nextDateEls.forEach((el) => { el.textContent = text; });
+    }
+  }
+
   const countdown = $('#countdown');
   if (countdown) {
     /* Odpočet míří vždy na nejbližší termín. Termíny se berou z karet v sekci Termíny

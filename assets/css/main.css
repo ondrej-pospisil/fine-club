@@ -898,6 +898,9 @@ p:last-child { margin-bottom: 0; }
 .support .d3 { margin: .75rem 0 var(--space-stack); }
 .support .lead { max-width: 52ch; margin-inline: auto; color: var(--cream-80); }
 
+.cta-end { text-align: center; }
+.cta-end .d2 { margin: .75rem 0 var(--space-block); }
+
 /* Termíny ------------------------------------------------------------- */
 .dates { display: grid; grid-template-columns: 1.4fr .9fr; gap: clamp(16px, 2.4vw, 28px); align-items: start; }
 .dates:not(:has(> .date-card:nth-child(2):not([hidden]))) { grid-template-columns: minmax(0, 760px); }
